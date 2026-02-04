@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Hero from '@/components/ui/Hero';
-import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import ContentSection from '@/components/ui/ContentSection';
 import InfoCard from '@/components/ui/InfoCard';
 import Footer from '@/components/layout/Footer';
@@ -15,13 +14,12 @@ export default function ConclusionPage() {
   return (
     <main className="min-h-screen">
       <Hero
-        variant="simple"
         badge="Conclusion"
         title="Summary & Findings"
         subtitle="Summary findings and key insights from the accreditation self-study process"
-      >
-        <Breadcrumbs items={[{ label: 'Conclusion' }]} className="justify-center text-blue-200" />
-      </Hero>
+        size="md"
+        align="center"
+      />
 
       <ContentSection>
         <div className="space-y-8">

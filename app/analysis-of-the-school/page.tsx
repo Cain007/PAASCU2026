@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Hero from '@/components/ui/Hero';
-import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import ContentSection from '@/components/ui/ContentSection';
 import InfoCard from '@/components/ui/InfoCard';
 import Footer from '@/components/layout/Footer';
@@ -15,13 +14,12 @@ export default function AnalysisOfTheSchoolPage() {
   return (
     <main className="min-h-screen">
       <Hero
-        variant="simple"
         badge="Analysis"
         title="Analysis of the School"
         subtitle="In-depth evaluation across all accreditation areas and institutional standards"
-      >
-        <Breadcrumbs items={[{ label: 'Analysis of the School' }]} className="justify-center text-blue-200" />
-      </Hero>
+        size="md"
+        align="center"
+      />
 
       <ContentSection>
         <div className="space-y-8">

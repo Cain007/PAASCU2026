@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Hero from '@/components/ui/Hero';
-import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import ContentSection from '@/components/ui/ContentSection';
 import InfoCard from '@/components/ui/InfoCard';
 import Footer from '@/components/layout/Footer';
@@ -15,13 +14,12 @@ export default function AppendicesPage() {
   return (
     <main className="min-h-screen">
       <Hero
-        variant="simple"
         badge="Appendices"
         title="Supporting Documents"
         subtitle="Supporting documents, references, and supplementary materials"
-      >
-        <Breadcrumbs items={[{ label: 'Appendices' }]} className="justify-center text-blue-200" />
-      </Hero>
+        size="md"
+        align="center"
+      />
 
       <ContentSection>
         <div className="space-y-8">

@@ -1,133 +1,205 @@
-import { ReactNode } from 'react';
-import { Award } from 'lucide-react';
+'use client';
 
+import { ReactNode, useSyncExternalStore } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight, LucideIcon } from 'lucide-react';
+
+// Hook to detect prefers-reduced-motion
+function useReducedMotion(): boolean {
+  return useSyncExternalStore(
+    (callback) => {
+      const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      mq.addEventListener('change', callback);
+      return () => mq.removeEventListener('change', callback);
+    },
+    () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    () => false
+  );
+}
+
+// CTA button interface
+interface CTAButton {
+  label: string;
+  href: string;
+  variant?: 'primary' | 'secondary';
+  icon?: LucideIcon;
+}
+
+// Hero component props
 interface HeroProps {
-  badge?: string;
+  // Content
   title: string;
   titleHighlight?: string;
   subtitle?: string;
   subtitleSecondary?: string;
+  badge?: string;
+  
+  // CTAs
+  ctas?: CTAButton[];
+  
+  // Layout
+  align?: 'left' | 'center';
+  size?: 'sm' | 'md' | 'lg';
+  
+  // Slots
+  breadcrumbSlot?: ReactNode;
   children?: ReactNode;
-  variant?: 'default' | 'simple';
-  highlights?: string[];
+  
+  // Options
+  showScrollIndicator?: boolean;
 }
 
 export default function Hero({
-  badge,
   title,
   titleHighlight,
   subtitle,
   subtitleSecondary,
+  badge,
+  ctas,
+  align = 'center',
+  size = 'md',
+  breadcrumbSlot,
   children,
-  variant = 'default',
-  highlights,
+  showScrollIndicator = false,
 }: HeroProps) {
-  if (variant === 'simple') {
-    return (
-      <section className="relative py-20 lg:py-28 overflow-hidden bg-linear-to-br from-slate-900 via-blue-900 to-slate-800">
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  const reducedMotion = useReducedMotion();
+  
+  // Size configurations
+  const sizeConfig = {
+    sm: {
+      section: 'py-16 lg:py-20',
+      title: 'text-2xl sm:text-3xl md:text-4xl',
+      subtitle: 'text-base sm:text-lg',
+      maxWidth: 'max-w-4xl',
+    },
+    md: {
+      section: 'py-20 lg:py-28',
+      title: 'text-3xl sm:text-4xl md:text-5xl',
+      subtitle: 'text-lg sm:text-xl',
+      maxWidth: 'max-w-5xl',
+    },
+    lg: {
+      section: 'min-h-[85vh] flex items-center',
+      title: 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl',
+      subtitle: 'text-lg sm:text-xl',
+      maxWidth: 'max-w-6xl',
+    },
+  };
+  
+  const config = sizeConfig[size];
+  
+  // Animation classes (respect reduced motion)
+  const animateClass = reducedMotion ? '' : 'animate-pulse';
+  const bounceClass = reducedMotion ? '' : 'animate-bounce';
+  
+  return (
+    <section
+      className={`relative overflow-hidden ${config.section}`}
+      role="banner"
+      aria-label={`${title} hero section`}
+    >
+      {/* Background Image - Same as Home page */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/schoolbldg.png"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+          aria-hidden="true"
+        />
+        {/* Blue-toned Gradient Overlays */}
+        <div className="absolute inset-0 bg-linear-to-r from-slate-900/95 via-slate-900/80 to-slate-900/60" />
+        <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 via-transparent to-slate-900/40" />
+      </div>
+      
+      {/* Content Container */}
+      <div
+        className={`relative z-10 w-full ${config.maxWidth} mx-auto px-4 sm:px-6 lg:px-8 ${
+          size === 'lg' ? 'py-20' : ''
+        } ${align === 'center' ? 'text-center' : 'text-left'}`}
+      >
+        <div className={align === 'left' ? 'max-w-2xl' : ''}>
+          {/* Badge */}
           {badge && (
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-blue-200 text-sm font-medium mb-6">
-              <Award className="w-4 h-4" />
-              <span>{badge}</span>
+            <div
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border bg-white/10 backdrop-blur-sm border-white/20 text-white/90 text-xs font-medium mb-6"
+            >
+              <span className={`w-1.5 h-1.5 rounded-full bg-amber-400 ${animateClass}`} />
+              {badge}
             </div>
           )}
-
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+          
+          {/* Title */}
+          <h1 className={`${config.title} font-bold text-white mb-4 leading-tight`}>
             {title}
             {titleHighlight && (
-              <span className="block mt-2 bg-linear-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
+              <span className="block mt-2 text-amber-300">
                 {titleHighlight}
               </span>
             )}
           </h1>
-
+          
+          {/* Subtitle */}
           {subtitle && (
-            <p className="text-lg sm:text-xl text-blue-100/80 max-w-3xl mx-auto leading-relaxed">
+            <p className={`${config.subtitle} text-white/80 mb-3 leading-relaxed ${align === 'center' ? 'max-w-3xl mx-auto' : 'max-w-lg'}`}>
               {subtitle}
             </p>
           )}
-
-          {children && <div className="mt-8">{children}</div>}
-        </div>
-      </section>
-    );
-  }
-
-  return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-linear-to-br from-slate-900 via-blue-900 to-slate-800">
-      {/* Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-3xl" />
-      </div>
-
-      {/* Grid Pattern Overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-      />
-
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {badge && (
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-blue-200 text-sm font-medium mb-8">
-            <Award className="w-4 h-4" />
-            <span>{badge}</span>
-          </div>
-        )}
-
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-          {title}
-          {titleHighlight && (
-            <span className="block mt-2 bg-linear-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
-              {titleHighlight}
-            </span>
+          
+          {/* Secondary Subtitle */}
+          {subtitleSecondary && (
+            <p className={`text-sm text-white/60 mb-6 ${align === 'center' ? 'max-w-lg mx-auto' : 'max-w-lg'}`}>
+              {subtitleSecondary}
+            </p>
           )}
-        </h1>
-
-        {subtitle && (
-          <p className="text-lg sm:text-xl md:text-2xl text-blue-100/80 max-w-3xl mx-auto mb-8 leading-relaxed">
-            {subtitle}
-            {subtitleSecondary && (
-              <span className="block mt-2 text-blue-200/60">{subtitleSecondary}</span>
-            )}
-          </p>
-        )}
-
-        {highlights && highlights.length > 0 && (
-          <div className="flex flex-wrap justify-center gap-4 mb-10">
-            {highlights.map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 text-blue-100/90 text-sm"
-              >
-                <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {children}
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
-          <div className="w-1.5 h-3 bg-white/50 rounded-full animate-pulse" />
+          
+          {/* CTA Buttons */}
+          {ctas && ctas.length > 0 && (
+            <div className={`flex flex-col sm:flex-row gap-3 mt-8 ${align === 'center' ? 'justify-center' : ''}`}>
+              {ctas.map((cta, index) => {
+                const Icon = cta.icon;
+                const isPrimary = cta.variant !== 'secondary';
+                return (
+                  <Link
+                    key={index}
+                    href={cta.href}
+                    className={`group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 ${
+                      isPrimary
+                        ? 'bg-red-600 text-white shadow-lg hover:bg-red-700'
+                        : 'bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20'
+                    }`}
+                  >
+                    {cta.label}
+                    {Icon ? (
+                      <Icon className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                    ) : isPrimary ? (
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                    ) : null}
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+          
+          {/* Breadcrumb Slot */}
+          {breadcrumbSlot && <div className="mt-6">{breadcrumbSlot}</div>}
+          
+          {/* Children */}
+          {children && <div className="mt-4">{children}</div>}
         </div>
       </div>
+      
+      {/* Scroll Indicator */}
+      {showScrollIndicator && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 text-white/50">
+          <span className="text-xs font-medium">Scroll to explore</span>
+          <div className="w-5 h-8 rounded-full border-2 border-white/30 flex items-start justify-center p-1.5">
+            <div className={`w-1 h-2 rounded-full bg-white/50 ${bounceClass}`} />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
