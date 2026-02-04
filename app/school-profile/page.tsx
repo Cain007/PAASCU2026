@@ -109,8 +109,11 @@ export default function SchoolProfilePage() {
             priority
           />
           
+          {/* Brightness overlay for OLED devices */}
+          <div className="absolute inset-0 bg-white/20" />
+          
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-linear-to-r from-slate-900/95 via-slate-900/85 to-slate-900/70" />
+          <div className="absolute inset-0 bg-linear-to-r from-slate-900/70 via-slate-900/55 to-slate-900/40" />
           
           {/* Content */}
           <div className="relative z-10 w-full">

@@ -33,8 +33,10 @@ export default function FollowUpActionPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-linear-to-r from-slate-900/95 via-slate-900/85 to-slate-900/75" />
-          <div className="absolute inset-0 bg-linear-to-t from-slate-900/95 via-slate-900/50 to-slate-900/60" />
+          {/* Brightness overlay for OLED devices */}
+          <div className="absolute inset-0 bg-white/20" />
+          <div className="absolute inset-0 bg-linear-to-r from-slate-900/70 via-slate-900/55 to-slate-900/40" />
+          <div className="absolute inset-0 bg-linear-to-t from-slate-900/65 via-slate-900/30 to-slate-900/35" />
         </div>
 
         {/* Content */}

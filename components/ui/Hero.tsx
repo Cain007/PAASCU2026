@@ -109,9 +109,13 @@ export default function Hero({
           priority
           aria-hidden="true"
         />
+        {/* Brightness overlay for OLED devices */}
+        <div className="absolute inset-0 bg-white/20" />
         {/* Blue-toned Gradient Overlays */}
-        <div className="absolute inset-0 bg-linear-to-r from-slate-900/95 via-slate-900/80 to-slate-900/60" />
-        <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 via-transparent to-slate-900/40" />
+        <div className="absolute inset-0 bg-linear-to-r from-slate-900/70 via-slate-900/50 to-slate-900/30" />
+        <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-transparent to-slate-900/20" />
+        {/* Semi-transparent overlay */}
+        <div className="absolute inset-0 bg-black/30" />
       </div>
       
       {/* Content Container */}
