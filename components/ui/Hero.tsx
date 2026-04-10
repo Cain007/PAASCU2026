@@ -4,6 +4,7 @@ import { ReactNode, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, LucideIcon } from 'lucide-react';
+import MouseScrollIndicator from './MouseScrollIndicator';
 
 // Hook to detect prefers-reduced-motion
 function useReducedMotion(): boolean {
@@ -91,8 +92,6 @@ export default function Hero({
   
   // Animation classes (respect reduced motion)
   const animateClass = reducedMotion ? '' : 'animate-pulse';
-  const bounceClass = reducedMotion ? '' : 'animate-bounce';
-  
   return (
     <section
       className={`relative overflow-hidden ${config.section}`}
@@ -110,12 +109,12 @@ export default function Hero({
           aria-hidden="true"
         />
         {/* Brightness overlay for OLED devices */}
-        <div className="absolute inset-0 bg-white/20" />
-        {/* Blue-toned Gradient Overlays */}
-        <div className="absolute inset-0 bg-linear-to-r from-slate-900/70 via-slate-900/50 to-slate-900/30" />
-        <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-transparent to-slate-900/20" />
+        <div className="absolute inset-0 bg-white/10" />
+        {/* Red-toned Gradient Overlays - School Colors */}
+        <div className="absolute inset-0 bg-linear-to-r from-red-950/80 via-red-900/60 to-red-950/80" />
+        <div className="absolute inset-0 bg-linear-to-t from-red-950/70 via-transparent to-red-900/40" />
         {/* Semi-transparent overlay */}
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-red-950/20" />
       </div>
       
       {/* Content Container */}
@@ -136,7 +135,7 @@ export default function Hero({
           )}
           
           {/* Title */}
-          <h1 className={`${config.title} font-bold text-white mb-4 leading-tight`}>
+          <h1 className={`${config.title} font-bold text-white mb-4 leading-tight whitespace-nowrap`}>
             {title}
             {titleHighlight && (
               <span className="block mt-2 text-amber-300">
@@ -197,11 +196,12 @@ export default function Hero({
       
       {/* Scroll Indicator */}
       {showScrollIndicator && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 text-white/50">
-          <span className="text-xs font-medium">Scroll to explore</span>
-          <div className="w-5 h-8 rounded-full border-2 border-white/30 flex items-start justify-center p-1.5">
-            <div className={`w-1 h-2 rounded-full bg-white/50 ${bounceClass}`} />
-          </div>
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
+          <MouseScrollIndicator
+            tone="light"
+            label="Scroll to explore"
+            className="scale-90 origin-bottom opacity-85"
+          />
         </div>
       )}
     </section>

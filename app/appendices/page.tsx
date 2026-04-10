@@ -1,58 +1,58 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Hero from '@/components/ui/Hero';
-import ContentSection from '@/components/ui/ContentSection';
-import InfoCard from '@/components/ui/InfoCard';
 import Footer from '@/components/layout/Footer';
-import { FolderOpen, FileText, Image, BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Appendices | SCSJ-IBED PAASCU 2026',
-  description: 'Supporting documents, references, and supplementary materials for the PAASCU accreditation.',
+  title: 'Summary of Appendices | SCSJ-IBED PAASCU 2026',
+  description: 'Summary of appendices for the PAASCU resurvey visit.',
 };
+
+const appendicesAreas = [
+  'Leadership and Governance',
+  'Quality Assurance',
+  'Resource Management',
+  'Teaching and Learning',
+  'Student Services',
+  'External Relations',
+  'Research',
+  'Results',
+];
 
 export default function AppendicesPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-neutral-100">
       <Hero
-        badge="Appendices"
-        title="Supporting Documents"
-        subtitle="Supporting documents, references, and supplementary materials"
+        badge="Part V"
+        title="Summary of Appendices"
+        subtitle="PAASCU Resurvey Visit"
         size="md"
         align="center"
       />
 
-      <ContentSection>
-        <div className="space-y-8">
-          <InfoCard
-            icon={FolderOpen}
-            title="Document Repository"
-            description="A categorized collection of all supporting documents will be available here."
-            variant="default"
-          />
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <InfoCard
-              icon={FileText}
-              title="Official Documents"
-              description="Institutional policies, manuals, and official publications will be listed here."
-              variant="muted"
-            />
-            <InfoCard
-              icon={Image}
-              title="Evidence Files"
-              description="Photos, reports, and other evidence materials will be organized here."
-              variant="muted"
-            />
+      <section className="px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+            {appendicesAreas.map((area, index) => (
+              <article key={area} className="mx-auto w-full max-w-[210px]">
+                <div className="bg-white p-2 shadow-sm ring-1 ring-neutral-200">
+                  <Image
+                    src="/PAASCU.png"
+                    alt={`${area} appendices card`}
+                    width={900}
+                    height={1400}
+                    className="h-auto w-full"
+                    priority={index < 2}
+                  />
+                </div>
+                <h2 className="mt-2 text-center text-base font-extrabold uppercase leading-tight tracking-[0.01em] text-neutral-900 sm:text-lg">
+                  {area}
+                </h2>
+              </article>
+            ))}
           </div>
-
-          <InfoCard
-            icon={BookOpen}
-            title="References"
-            description="Bibliography and external references used in the self-study will be compiled here."
-            variant="default"
-          />
         </div>
-      </ContentSection>
+      </section>
 
       <Footer />
     </main>

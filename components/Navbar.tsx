@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useRef, useEffect, useCallback, useSyncExternalStore } from 'react';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
@@ -76,6 +76,8 @@ function ParticleField() {
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [openDesktopDropdown, setOpenDesktopDropdown] = useState<string | null>(null);
+  const [openMobileSection, setOpenMobileSection] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
   const lastScrollY = useRef(0);
@@ -87,15 +89,45 @@ export default function Navbar() {
   const logoRef = useRef<HTMLDivElement>(null);
   const desktopLinksRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const mobileLinksRef = useRef<(HTMLAnchorElement | null)[]>([]);
   const mobileTimelineRef = useRef<gsap.core.Timeline | null>(null);
+  const desktopDropdownCloseTimeoutRef = useRef<number | null>(null);
 
-  const isActiveLink = (href: string) => {
+  const isActiveLink = (href?: string) => {
+    if (!href) {
+      return false;
+    }
     if (href === '/') {
       return pathname === '/';
     }
     return pathname.startsWith(href);
   };
+
+  const isDropdownActive = (children?: Array<{ href: string }>) => {
+    if (!children) {
+      return false;
+    }
+
+    return children.some((child) => isActiveLink(child.href));
+  };
+
+  const clearDesktopDropdownCloseTimeout = useCallback(() => {
+    if (desktopDropdownCloseTimeoutRef.current !== null) {
+      window.clearTimeout(desktopDropdownCloseTimeoutRef.current);
+      desktopDropdownCloseTimeoutRef.current = null;
+    }
+  }, []);
+
+  const openDesktopDropdownMenu = useCallback((name: string) => {
+    clearDesktopDropdownCloseTimeout();
+    setOpenDesktopDropdown(name);
+  }, [clearDesktopDropdownCloseTimeout]);
+
+  const scheduleDesktopDropdownClose = useCallback(() => {
+    clearDesktopDropdownCloseTimeout();
+    desktopDropdownCloseTimeoutRef.current = window.setTimeout(() => {
+      setOpenDesktopDropdown(null);
+    }, 140);
+  }, [clearDesktopDropdownCloseTimeout]);
 
   // Entrance animations
   useGSAP(() => {
@@ -158,7 +190,7 @@ export default function Navbar() {
       );
       
       // Stagger mobile links
-      const mobileLinks = mobileLinksRef.current.filter(Boolean);
+      const mobileLinks = mobileMenuRef.current.querySelectorAll('[data-mobile-nav-item]');
       if (mobileLinks.length > 0) {
         tl.fromTo(
           mobileLinks,
@@ -169,7 +201,7 @@ export default function Navbar() {
       }
     } else {
       // Closing animation
-      const mobileLinks = mobileLinksRef.current.filter(Boolean);
+      const mobileLinks = mobileMenuRef.current.querySelectorAll('[data-mobile-nav-item]');
       if (mobileLinks.length > 0) {
         tl.to(mobileLinks, {
           opacity: 0,
@@ -199,8 +231,9 @@ export default function Navbar() {
       if (timelineRef.current) {
         timelineRef.current.kill();
       }
+      clearDesktopDropdownCloseTimeout();
     };
-  }, []);
+  }, [clearDesktopDropdownCloseTimeout]);
 
   // Scroll handling - hide navbar on scroll down, show on scroll up + progress bar
   useEffect(() => {
@@ -246,7 +279,7 @@ export default function Navbar() {
     <>
       {/* Scroll Progress Bar */}
       <div 
-        className="fixed top-0 left-0 right-0 z-[60] h-1 bg-gray-200/50"
+        className="fixed top-0 left-0 right-0 z-60 h-1 bg-gray-200/50"
         style={{ opacity: scrollProgress > 0 ? 1 : 0, transition: 'opacity 0.2s' }}
       >
         <div 
@@ -294,27 +327,90 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div ref={desktopLinksRef} className="hidden md:flex md:items-center md:space-x-1">
-            {navigationItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
-                  isActiveLink(item.href)
-                    ? 'text-primary-600 bg-primary-50'
-                    : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
-                }`}
-                aria-current={isActiveLink(item.href) ? 'page' : undefined}
-                onMouseEnter={(e) => handleLinkHover(e, true)}
-                onMouseLeave={(e) => handleLinkHover(e, false)}
-              >
-                {item.name}
-                {/* Animated underline indicator */}
-                <span 
-                  className="link-indicator absolute bottom-0 left-3 right-3 h-0.5 bg-primary-500 origin-left"
-                  style={{ transform: 'scaleX(0)' }}
-                />
-              </Link>
-            ))}
+            {navigationItems.map((item) => {
+              const hasChildren = Boolean(item.children?.length);
+              const isTopLevelActive = hasChildren
+                ? isDropdownActive(item.children)
+                : isActiveLink(item.href);
+              const isOpenDropdown = openDesktopDropdown === item.name;
+
+              if (hasChildren) {
+                return (
+                  <div
+                    key={item.name}
+                    className="relative"
+                    onMouseEnter={() => openDesktopDropdownMenu(item.name)}
+                    onMouseLeave={scheduleDesktopDropdownClose}
+                  >
+                    <button
+                      type="button"
+                      className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
+                        isTopLevelActive
+                          ? 'text-primary-600 bg-primary-50'
+                          : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
+                      }`}
+                      onClick={() => openDesktopDropdownMenu(item.name)}
+                      aria-expanded={isOpenDropdown}
+                      aria-haspopup="menu"
+                      data-nav-item="desktop"
+                    >
+                      <span>{item.name}</span>
+                      <ChevronDown className={`h-4 w-4 transition-transform ${isOpenDropdown ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    {isOpenDropdown && (
+                      <div
+                        className="absolute left-0 top-full min-w-[260px] border border-neutral-200 bg-white rounded-lg shadow-md p-1"
+                        role="menu"
+                        onMouseEnter={() => openDesktopDropdownMenu(item.name)}
+                        onMouseLeave={scheduleDesktopDropdownClose}
+                      >
+                        {item.children?.map((child) => (
+                          <Link
+                            key={child.name}
+                            href={child.href}
+                            className={`block px-3 py-2 text-sm rounded-md transition-colors duration-200 ${
+                              isActiveLink(child.href)
+                                ? 'text-primary-600 bg-primary-50'
+                                : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
+                            }`}
+                            role="menuitem"
+                            aria-current={isActiveLink(child.href) ? 'page' : undefined}
+                            onMouseEnter={(e) => handleLinkHover(e, true)}
+                            onMouseLeave={(e) => handleLinkHover(e, false)}
+                            data-nav-item="desktop"
+                          >
+                            {child.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href ?? '/'}
+                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
+                    isTopLevelActive
+                      ? 'text-primary-600 bg-primary-50'
+                      : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
+                  }`}
+                  aria-current={isTopLevelActive ? 'page' : undefined}
+                  onMouseEnter={(e) => handleLinkHover(e, true)}
+                  onMouseLeave={(e) => handleLinkHover(e, false)}
+                  data-nav-item="desktop"
+                >
+                  {item.name}
+                  <span
+                    className="link-indicator absolute bottom-0 left-3 right-3 h-0.5 bg-primary-500 origin-left"
+                    style={{ transform: 'scaleX(0)' }}
+                  />
+                </Link>
+              );
+            })}
           </div>
 
           {/* Mobile menu button */}
@@ -345,22 +441,73 @@ export default function Navbar() {
         aria-hidden={!isOpen}
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-neutral-100">
-          {navigationItems.map((item, index) => (
-            <Link
-              key={item.name}
-              ref={(el) => { mobileLinksRef.current[index] = el; }}
-              href={item.href}
-              className={`block px-3 py-2 text-base font-medium rounded-lg transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
-                isActiveLink(item.href)
-                  ? 'text-primary-600 bg-primary-50'
-                  : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
-              }`}
-              onClick={() => setIsOpen(false)}
-              aria-current={isActiveLink(item.href) ? 'page' : undefined}
-            >
-              {item.name}
-            </Link>
-          ))}
+          {navigationItems.map((item) => {
+            const hasChildren = Boolean(item.children?.length);
+            const isTopLevelActive = hasChildren
+              ? isDropdownActive(item.children)
+              : isActiveLink(item.href);
+            const isMobileSectionOpen = openMobileSection === item.name;
+
+            if (hasChildren) {
+              return (
+                <div key={item.name} className="border border-neutral-100 rounded-lg overflow-hidden">
+                  <button
+                    type="button"
+                    className={`w-full flex items-center justify-between px-3 py-2 text-base font-medium transition-colors duration-200 ${
+                      isTopLevelActive
+                        ? 'text-primary-600 bg-primary-50'
+                        : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
+                    }`}
+                    onClick={() =>
+                      setOpenMobileSection((current) => (current === item.name ? null : item.name))
+                    }
+                    aria-expanded={isMobileSectionOpen}
+                    data-mobile-nav-item
+                  >
+                    <span>{item.name}</span>
+                    <ChevronDown className={`h-4 w-4 transition-transform ${isMobileSectionOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {isMobileSectionOpen && (
+                    <div className="bg-white border-t border-neutral-100">
+                      {item.children?.map((child) => (
+                        <Link
+                          key={child.name}
+                          href={child.href}
+                          className={`block px-4 py-2 text-base transition-colors duration-200 ${
+                            isActiveLink(child.href)
+                              ? 'text-primary-600 bg-primary-50 font-medium'
+                              : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
+                          }`}
+                          onClick={() => setIsOpen(false)}
+                          aria-current={isActiveLink(child.href) ? 'page' : undefined}
+                          data-mobile-nav-item
+                        >
+                          {child.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={item.name}
+                href={item.href ?? '/'}
+                className={`block px-3 py-2 text-base font-medium rounded-lg transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
+                  isTopLevelActive
+                    ? 'text-primary-600 bg-primary-50'
+                    : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
+                }`}
+                onClick={() => setIsOpen(false)}
+                aria-current={isTopLevelActive ? 'page' : undefined}
+                data-mobile-nav-item
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </nav>

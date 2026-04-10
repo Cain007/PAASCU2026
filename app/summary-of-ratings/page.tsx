@@ -1,58 +1,43 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Hero from '@/components/ui/Hero';
-import ContentSection from '@/components/ui/ContentSection';
-import InfoCard from '@/components/ui/InfoCard';
 import Footer from '@/components/layout/Footer';
-import { BarChart3, TrendingUp, Target } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Summary of Ratings | SCSJ-IBED PAASCU 2026',
-  description: 'Overview of accreditation ratings and scores across all PAASCU evaluation areas.',
+  description: 'Summary of ratings for the PAASCU resurvey visit.',
 };
 
 export default function SummaryOfRatingsPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-neutral-100">
       <Hero
-        badge="Ratings"
+        badge="Summary"
         title="Summary of Ratings"
-        subtitle="Comprehensive overview of accreditation ratings across all evaluation areas"
+        subtitle="PAASCU Resurvey Visit"
         size="md"
         align="center"
       />
 
-      <ContentSection>
-        <div className="space-y-8">
-          <InfoCard
-            icon={BarChart3}
-            title="Overall Rating Summary"
-            description="Aggregate scores and overall accreditation status will be displayed here."
-            variant="default"
-          />
-
-          <InfoCard
-            icon={TrendingUp}
-            title="Ratings by Area"
-            description="Detailed breakdown of ratings for each PAASCU accreditation area will be presented here."
-            variant="muted"
-          />
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <InfoCard
-              icon={TrendingUp}
-              title="Performance Trends"
-              description="Historical comparison and improvement trends will be visualized here."
-              variant="default"
-            />
-            <InfoCard
-              icon={Target}
-              title="Target vs. Actual"
-              description="Comparison of target ratings against actual performance will be shown here."
-              variant="default"
-            />
-          </div>
+      <section className="px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
+        <div className="mx-auto max-w-6xl">
+          <article className="mx-auto w-full max-w-[210px]">
+            <div className="bg-white p-2 shadow-sm ring-1 ring-neutral-200">
+              <Image
+                src="/PAASCU.png"
+                alt="Summary of ratings card"
+                width={900}
+                height={1400}
+                className="h-auto w-full"
+                priority
+              />
+            </div>
+            <h2 className="mt-2 text-center text-base font-extrabold uppercase leading-tight tracking-[0.01em] text-neutral-900 sm:text-lg">
+              Summary of Ratings
+            </h2>
+          </article>
         </div>
-      </ContentSection>
+      </section>
 
       <Footer />
     </main>

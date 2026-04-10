@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import ContentSection from '@/components/ui/ContentSection';
 import Footer from '@/components/layout/Footer';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionHeader from '@/components/ui/SectionHeader';
+import MouseScrollIndicator from '@/components/ui/MouseScrollIndicator';
 import { Calendar, Award, GraduationCap, Building, BookOpen, Users, FileText, Church, Cross } from 'lucide-react';
 import Link from 'next/link';
 
@@ -202,6 +202,10 @@ export default function SchoolProfilePage() {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
+            <MouseScrollIndicator tone="light" label="Scroll to continue" />
           </div>
         </section>
 

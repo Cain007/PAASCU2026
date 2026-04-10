@@ -82,3 +82,107 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.mouse-scroll-indicator {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.mouse-scroll-indicator__label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.mouse-scroll-indicator__mouse {
+  height: 21px;
+  width: 14px;
+  border-radius: 10px;
+  border: 2px solid currentColor;
+}
+
+.mouse-scroll-indicator__wheel {
+  height: 5px;
+  width: 2px;
+  display: block;
+  margin: 5px auto;
+  background: currentColor;
+  position: relative;
+  animation: mouse-wheel 1.2s ease infinite;
+}
+
+.mouse-scroll-indicator__arrows {
+  margin-top: 2px;
+}
+
+.mouse-scroll-indicator__arrow {
+  display: block;
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  margin: 0 0 3px 6px;
+}
+
+.mouse-scroll-indicator__arrow.unu {
+  margin-top: 6px;
+}
+
+.mouse-scroll-indicator__arrow.unu,
+.mouse-scroll-indicator__arrow.doi,
+.mouse-scroll-indicator__arrow.trei {
+  animation: mouse-scroll 1s infinite;
+}
+
+.mouse-scroll-indicator__arrow.unu {
+  animation-delay: 0.1s;
+  animation-direction: alternate;
+}
+
+.mouse-scroll-indicator__arrow.doi {
+  animation-delay: 0.2s;
+  animation-direction: alternate;
+}
+
+.mouse-scroll-indicator__arrow.trei {
+  animation-delay: 0.3s;
+  animation-direction: alternate;
+}
+
+@keyframes mouse-wheel {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@keyframes mouse-scroll {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mouse-scroll-indicator__wheel,
+  .mouse-scroll-indicator__arrow.unu,
+  .mouse-scroll-indicator__arrow.doi,
+  .mouse-scroll-indicator__arrow.trei {
+    animation: none;
+  }
+}

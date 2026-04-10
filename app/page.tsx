@@ -102,7 +102,7 @@ export default function Home() {
               <div className="absolute -inset-2 bg-linear-to-r from-red-500 via-rose-500 to-amber-500 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
               <div className="relative overflow-hidden rounded-xl shadow-xl border border-gray-100">
                 <Image
-                  src="/schoolFb.png"
+                  src="/schoolFb1.png"
                   alt="Sta. Catalina College Biñan Facebook Page"
                   width={600}
                   height={400}
@@ -179,10 +179,10 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-gray-900">
-                      Sta. Catalina College
+                      Sta. Catalina College Inc.
                     </h3>
                     <p className="text-gray-600 text-sm">
-                      Biñan, Laguna, Philippines
+                      Biñan, Laguna
                     </p>
                   </div>
                 </div>
@@ -191,7 +191,7 @@ export default function Home() {
               <div className="p-5 bg-white rounded-xl border border-gray-200 shadow-sm flex-1">
                 <h4 className="text-base font-bold text-gray-900 mb-2">About Our Campus</h4>
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                  Sta. Catalina College is committed to providing quality Catholic education in the Augustinian tradition. 
+                  Sta. Catalina College is committed to providing quality Catholic education. 
                   Our campus offers modern facilities designed to support holistic student development.
                 </p>
                 <a
