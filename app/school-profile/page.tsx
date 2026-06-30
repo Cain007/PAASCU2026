@@ -152,13 +152,13 @@ export default function SchoolProfilePage() {
                   
                   {/* CTA Button */}
                   <Link
-                    href="https://docs.google.com/document/d/e/2PACX-1vRiobEsKpoGia4I5FECaKOn6JLJBiRP7z4XQsiG-OLTr_Ki6WocDSjze3NtTTEPXA/pub"
+                    href="https://drive.google.com/drive/folders/1hqgk6Mtjjbzn650Ev41ZRMQdlUV-iaCp?usp=drive_link"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-8 py-4 bg-red-600 text-white rounded-xl font-semibold shadow-lg hover:bg-red-700 transition-all duration-300 hover:scale-105 hover:shadow-red-500/25"
                   >
                     <FileText className="w-5 h-5" />
-                    View Complete History Document
+                    View Complete School Profile Document
                   </Link>
                 </div>
                 

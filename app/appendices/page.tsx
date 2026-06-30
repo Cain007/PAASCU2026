@@ -8,45 +8,99 @@ export const metadata: Metadata = {
   description: 'Summary of appendices for the PAASCU resurvey visit.',
 };
 
-const appendicesAreas = [
-  'Leadership and Governance',
-  'Quality Assurance',
-  'Resource Management',
-  'Teaching and Learning',
-  'Student Services',
-  'External Relations',
-  'Research',
-  'Results',
+
+const analysisAreas = [
+  {
+    name: 'Leadership and\nGovernance',
+    image: '/analysis-of-the-school/leadership1.png',
+    link: 'https://drive.google.com/drive/folders/1vsiBDowINMQHUvMvlmk91zv_Pkku6xMo?usp=sharing',
+  },
+  {
+    name: 'Quality\nAssurance',
+    image: '/analysis-of-the-school/quality1.png',
+    link: 'https://drive.google.com/drive/folders/1qs69TOOEN1TlMn-yrhP0rU9mYSAOoJKu?usp=sharing',
+  },
+  {
+    name: 'Resource\nManagement',
+    image: '/analysis-of-the-school/resource1.png',
+    link: 'https://drive.google.com/drive/folders/1RxZeW4fm9mLBHF40n3PsbGaosc0ZXOmw?usp=sharing',
+  },
+  {
+    name: 'Teaching and\nLearning',
+    image: '/analysis-of-the-school/teaching1.png',
+    link: 'https://drive.google.com/drive/folders/1akriVUcZmGbJJHIsvtw-crKudBX9znWf?usp=sharing',
+  },
+  {
+    name: 'Student\nServices',
+    image: '/analysis-of-the-school/student1.png',
+    link: 'https://drive.google.com/drive/folders/1NbDIB_Urt5mDIDAmebGP2iy45yp6jMaW?usp=sharing',
+  },
+  {
+    name: 'External\nRelations',
+    image: '/analysis-of-the-school/external1.png',
+    link: 'https://drive.google.com/drive/folders/1iOBeBK0PlCB-9NfQUuSD8etyq0ZG75L7?usp=sharing',
+  },
+  {
+    name: 'Research',
+    image: '/analysis-of-the-school/research1.png',
+    link: 'https://drive.google.com/drive/folders/1Ymon49pHyNYHrruThjtqzv9m2jttFmHP?usp=sharing',
+  },
+  {
+    name: 'Results',
+    image: '/analysis-of-the-school/result1.png',
+    link: 'https://drive.google.com/drive/folders/1wfQDlugFVV6MAZznQF9PpaNWqV76kgZl?usp=sharing',
+  },
 ];
 
-export default function AppendicesPage() {
+export default function AnalysisOfTheSchoolPage() {
   return (
     <main className="min-h-screen bg-neutral-100">
       <Hero
-        badge="Part V"
-        title="Summary of Appendices"
-        subtitle="PAASCU Resurvey Visit"
+        badge="Analysis of the School"
+        title="Institutional Analysis"
+        subtitle="PAASCU Resurvey Visit Areas"
         size="md"
         align="center"
       />
 
       <section className="px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-8 text-center">
+            <h1 className="text-2xl font-bold text-neutral-900 sm:text-3xl">
+              Analysis of the School
+            </h1>
+
+            <p className="mt-2 text-xs text-neutral-600 sm:text-sm">
+              PAASCU Resurvey Visit Areas
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
-            {appendicesAreas.map((area, index) => (
-              <article key={area} className="mx-auto w-full max-w-[210px]">
-                <div className="bg-white p-2 shadow-sm ring-1 ring-neutral-200">
-                  <Image
-                    src="/PAASCU.png"
-                    alt={`${area} appendices card`}
-                    width={900}
-                    height={1400}
-                    className="h-auto w-full"
-                    priority={index < 2}
-                  />
-                </div>
-                <h2 className="mt-2 text-center text-base font-extrabold uppercase leading-tight tracking-[0.01em] text-neutral-900 sm:text-lg">
-                  {area}
+            {analysisAreas.map((area, index) => (
+              <article
+                key={area.name}
+                className="mx-auto w-full max-w-[540px] p-2"
+              >
+                <a
+                  href={area.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <div className="bg-white p-2 shadow-sm ring-1 ring-neutral-200 transition duration-200 hover:shadow-lg hover:scale-[1.02]">
+                    <Image
+                      src={area.image}
+                      alt={`${area.name} PAASCU card`}
+                      width={1500}
+                      height={2333}
+                      className="w-full h-auto cursor-pointer"
+                      priority={index < 2}
+                    />
+                  </div>
+                </a>
+
+                <h2 className="mt-2 min-h-[60px] whitespace-pre-line text-center text-base font-extrabold uppercase leading-tight tracking-[0.01em] text-neutral-900 sm:text-lg">
+                  {area.name}
                 </h2>
               </article>
             ))}
