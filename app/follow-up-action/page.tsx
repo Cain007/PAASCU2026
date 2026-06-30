@@ -36,12 +36,12 @@ const followUpAreas = [
   },
   {
     name: 'Student\nServices',
-    image: '/follow-up-action-page/student.png',
+    image: '/follow-up-action-page/Student.png',
     link: 'https://drive.google.com/drive/folders/1a_Zl4poOjD0iwwkHgtEdyEBRdDYEjKcX?usp=drive_link',
   },
   {
     name: 'School and\nCommunity',
-    image: '/follow-up-action-page/school.png',
+    image: '/follow-up-action-page/School.png',
     link: 'https://drive.google.com/drive/folders/16qOUMYHn6V5VcnyWG4PCXGT4WIB1JffX?usp=drive_link',
   },
 ];
