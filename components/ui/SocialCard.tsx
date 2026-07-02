@@ -28,7 +28,7 @@ function SocialCardBase({ card }: SocialCardProps) {
       aria-label={`Visit ${card.title} on Facebook`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      className="group relative w-[260px] sm:w-[300px] md:w-[320px] h-[340px] md:h-[380px] shrink-0 cursor-pointer select-none
+      className="group relative w-[200px] sm:w-[240px] md:w-[260px] h-[280px] md:h-[340px] shrink-0 cursor-pointer select-none
                  rounded-2xl border border-gray-200/70 bg-white/70 backdrop-blur-sm
                  shadow-md hover:shadow-2xl hover:shadow-red-900/10
                  transition-all duration-300 ease-out

@@ -182,7 +182,7 @@ export default function Hero({
                     ) : null}
                   </Link>
                 );
-              })}0
+              })}
             </div>
           )}
           
