@@ -8,6 +8,7 @@ import Footer from '@/components/layout/Footer';
 import ContentSection from '@/components/ui/ContentSection';
 import SectionHeader from '@/components/ui/SectionHeader';
 import AnimatedSection from '@/components/ui/AnimatedSection';
+import SocialConnect from '@/components/ui/SocialConnect';
 
 export const metadata: Metadata = {
   title: 'Home | SCSJ-IBED PAASCU 2026',
@@ -127,6 +128,7 @@ export default function Home() {
               <p className="text-gray-600 leading-relaxed mb-6">
                 Follow our official Facebook page for the latest updates, announcements, events, and highlights from Sta. Catalina College Biñan. Join our growing community of students, parents, alumni, and educators.
               </p>
+
               <a
                 href="https://www.facebook.com/scccaresbinan"
                 target="_blank"
@@ -142,6 +144,9 @@ export default function Home() {
           </AnimatedSection>
         </div>
       </ContentSection>
+
+      {/* Social Media Marquee */}
+      <SocialConnect />
 
       {/* Location Section with Google Map */}
       <ContentSection>
@@ -194,6 +199,7 @@ export default function Home() {
                   Sta. Catalina College is committed to providing quality Catholic education. 
                   Our campus offers modern facilities designed to support holistic student development.
                 </p>
+
                 <a
                   href="https://www.google.com/maps/place/Sta+Catalina+College/@14.3392819,121.0869522,18.6z"
                   target="_blank"
