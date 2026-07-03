@@ -4,6 +4,7 @@ import Footer from '@/components/layout/Footer';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionHeader from '@/components/ui/SectionHeader';
 import MouseScrollIndicator from '@/components/ui/MouseScrollIndicator';
+import BackToTopButton from '@/components/ui/BackToTopButton';
 import { Calendar, Award, GraduationCap, Building, BookOpen, Users, FileText, Church, Cross } from 'lucide-react';
 import Link from 'next/link';
 
@@ -474,6 +475,13 @@ export default function SchoolProfilePage() {
                   </div>
                 </div>
               </AnimatedSection>
+            </div>
+          </section>
+
+          {/* Back to Top Section */}
+          <section className="px-4 py-12 sm:px-6 lg:px-8 bg-linear-to-b from-white to-gray-50">
+            <div className="max-w-4xl mx-auto text-center">
+              <BackToTopButton />
             </div>
           </section>
 
