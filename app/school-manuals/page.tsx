@@ -32,15 +32,7 @@ export default function SchoolManualsPage() {
 
       <section className="px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-8 text-center">
-            <h1 className="text-2xl font-bold text-neutral-900 sm:text-3xl">
-              School Manuals
-            </h1>
-
-            <p className="mt-2 text-xs text-neutral-600 sm:text-sm">
-              Policy and operations references
-            </p>
-          </div>
+          
 
           <div className="space-y-8">
             {/* First Row */}

@@ -31,15 +31,7 @@ export default function FollowUpActionPage() {
 
       <section className="px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-8 text-center">
-            <h1 className="text-2xl font-bold text-neutral-900 sm:text-3xl">
-              Implementation Progress
-            </h1>
-
-            <p className="mt-2 text-xs text-neutral-600 sm:text-sm">
-              PAASCU Resurvey Visit Areas
-            </p>
-          </div>
+          
 
           <article className="mx-auto w-full max-w-[300px]">
             <a
