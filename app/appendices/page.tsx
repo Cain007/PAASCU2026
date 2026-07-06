@@ -57,7 +57,7 @@ export default function AnalysisOfTheSchoolPage() {
     <main className="min-h-screen bg-neutral-100">
       <Hero
         badge="Analysis of the School"
-        title="SUMMARY OF APPENDICES"
+        title="Part V : Summary of Appendices"
         subtitle="PAASCU Resurvey Visit Areas"
         size="md"
         align="center"

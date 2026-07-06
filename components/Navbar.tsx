@@ -5,17 +5,12 @@ import Image from 'next/image';
 import { useState, useRef, useEffect, useCallback, useSyncExternalStore } from 'react';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, Menu, X } from 'lucide-react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial } from '@react-three/drei';
-import * as THREE from 'three';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { navigationItems } from '@/config/navigation';
 
-// Register GSAP plugin
 gsap.registerPlugin(useGSAP);
 
-// Hook for reduced motion preference
 function useReducedMotion() {
   const subscribe = useCallback((callback: () => void) => {
     if (typeof window === 'undefined') return () => {};
@@ -34,57 +29,17 @@ function useReducedMotion() {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
 
-function ParticleField() {
-  const ref = useRef<THREE.Points>(null);
-  
-  const [sphere] = useState(() => {
-    const positions = new Float32Array(1500);
-    for (let i = 0; i < 500; i++) {
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
-      const radius = 1.2;
-      
-      positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
-      positions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
-      positions[i * 3 + 2] = radius * Math.cos(phi);
-    }
-    return positions;
-  });
-
-  useFrame((state, delta) => {
-    if (ref.current) {
-      ref.current.rotation.x -= delta / 10;
-      ref.current.rotation.y -= delta / 15;
-    }
-  });
-
-  return (
-    <group rotation={[0, 0, Math.PI / 4]}>
-      <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
-        <PointMaterial
-          transparent
-          color="#dc2626"
-          size={0.015}
-          sizeAttenuation={true}
-          depthWrite={false}
-          opacity={0.8}
-        />
-      </Points>
-    </group>
-  );
-}
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [openDesktopDropdown, setOpenDesktopDropdown] = useState<string | null>(null);
   const [openMobileSection, setOpenMobileSection] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const lastScrollY = useRef(0);
   const prefersReducedMotion = useReducedMotion();
   const pathname = usePathname();
-  
-  // Refs for GSAP animations
+
   const navRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const desktopLinksRef = useRef<HTMLDivElement>(null);
@@ -93,20 +48,13 @@ export default function Navbar() {
   const desktopDropdownCloseTimeoutRef = useRef<number | null>(null);
 
   const isActiveLink = (href?: string) => {
-    if (!href) {
-      return false;
-    }
-    if (href === '/') {
-      return pathname === '/';
-    }
+    if (!href) return false;
+    if (href === '/') return pathname === '/';
     return pathname.startsWith(href);
   };
 
   const isDropdownActive = (children?: Array<{ href: string }>) => {
-    if (!children) {
-      return false;
-    }
-
+    if (!children) return false;
     return children.some((child) => isActiveLink(child.href));
   };
 
@@ -117,10 +65,13 @@ export default function Navbar() {
     }
   }, []);
 
-  const openDesktopDropdownMenu = useCallback((name: string) => {
-    clearDesktopDropdownCloseTimeout();
-    setOpenDesktopDropdown(name);
-  }, [clearDesktopDropdownCloseTimeout]);
+  const openDesktopDropdownMenu = useCallback(
+    (name: string) => {
+      clearDesktopDropdownCloseTimeout();
+      setOpenDesktopDropdown(name);
+    },
+    [clearDesktopDropdownCloseTimeout]
+  );
 
   const scheduleDesktopDropdownClose = useCallback(() => {
     clearDesktopDropdownCloseTimeout();
@@ -129,102 +80,76 @@ export default function Navbar() {
     }, 140);
   }, [clearDesktopDropdownCloseTimeout]);
 
-  // Entrance animations
-  useGSAP(() => {
-    if (prefersReducedMotion || typeof window === 'undefined') return;
+  useGSAP(
+    () => {
+      if (prefersReducedMotion || typeof window === 'undefined') return;
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
 
-      // Navbar container entrance
-      tl.fromTo(
-        navRef.current,
-        { opacity: 0, y: -8 },
-        { opacity: 1, y: 0, duration: 0.5 }
-      );
+        tl.fromTo(navRef.current, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45 });
+        tl.fromTo(logoRef.current, { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.35 }, '-=0.25');
 
-      // Logo and titles
-      tl.fromTo(
-        logoRef.current,
-        { opacity: 0, y: -6 },
-        { opacity: 1, y: 0, duration: 0.4 },
-        '-=0.3'
-      );
+        const desktopLinks = desktopLinksRef.current?.querySelectorAll('[data-nav-item="desktop"]');
+        if (desktopLinks) {
+          tl.fromTo(
+            desktopLinks,
+            { opacity: 0, y: -6 },
+            { opacity: 1, y: 0, duration: 0.25, stagger: 0.04 },
+            '-=0.2'
+          );
+        }
+      }, navRef);
 
-      // Desktop nav links staggered
-      const desktopLinks = desktopLinksRef.current?.querySelectorAll('a');
-      if (desktopLinks) {
+      return () => ctx.revert();
+    },
+    { dependencies: [prefersReducedMotion], scope: navRef }
+  );
+
+  const animateMobileMenu = useCallback(
+    (open: boolean) => {
+      if (prefersReducedMotion || !mobileMenuRef.current) return;
+
+      if (mobileTimelineRef.current) {
+        mobileTimelineRef.current.kill();
+      }
+
+      const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
+      mobileTimelineRef.current = tl;
+
+      if (open) {
+        tl.set(mobileMenuRef.current, { display: 'block', overflow: 'hidden' });
         tl.fromTo(
-          desktopLinks,
-          { opacity: 0, y: -6 },
-          { opacity: 1, y: 0, duration: 0.3, stagger: 0.05 },
-          '-=0.2'
+          mobileMenuRef.current,
+          { height: 0, opacity: 0, y: -6 },
+          { height: 'auto', opacity: 1, y: 0, duration: 0.28 }
         );
+
+        const mobileLinks = mobileMenuRef.current.querySelectorAll('[data-mobile-nav-item]');
+        if (mobileLinks.length > 0) {
+          tl.fromTo(
+            mobileLinks,
+            { opacity: 0, x: -8 },
+            { opacity: 1, x: 0, duration: 0.18, stagger: 0.035 },
+            '-=0.08'
+          );
+        }
+      } else {
+        const mobileLinks = mobileMenuRef.current.querySelectorAll('[data-mobile-nav-item]');
+        if (mobileLinks.length > 0) {
+          tl.to(mobileLinks, { opacity: 0, x: -8, duration: 0.12, stagger: 0.015 });
+        }
+        tl.to(mobileMenuRef.current, { height: 0, opacity: 0, y: -6, duration: 0.22 });
+        tl.set(mobileMenuRef.current, { display: 'none', overflow: 'hidden' });
       }
-    }, navRef);
+    },
+    [prefersReducedMotion]
+  );
 
-    return () => ctx.revert();
-  }, { dependencies: [prefersReducedMotion], scope: navRef });
-
-  // Mobile menu animation
-  const animateMobileMenu = useCallback((open: boolean) => {
-    if (prefersReducedMotion || !mobileMenuRef.current) return;
-
-    // Kill existing timeline
-    if (mobileTimelineRef.current) {
-      mobileTimelineRef.current.kill();
-    }
-
-    const tl = gsap.timeline({
-      defaults: { ease: 'power2.inOut' }
-    });
-    mobileTimelineRef.current = tl;
-
-    if (open) {
-      // Opening animation
-      tl.set(mobileMenuRef.current, { display: 'block', overflow: 'hidden' });
-      tl.fromTo(
-        mobileMenuRef.current,
-        { height: 0, opacity: 0 },
-        { height: 'auto', opacity: 1, duration: 0.3 }
-      );
-      
-      // Stagger mobile links
-      const mobileLinks = mobileMenuRef.current.querySelectorAll('[data-mobile-nav-item]');
-      if (mobileLinks.length > 0) {
-        tl.fromTo(
-          mobileLinks,
-          { opacity: 0, x: -10 },
-          { opacity: 1, x: 0, duration: 0.2, stagger: 0.04 },
-          '-=0.1'
-        );
-      }
-    } else {
-      // Closing animation
-      const mobileLinks = mobileMenuRef.current.querySelectorAll('[data-mobile-nav-item]');
-      if (mobileLinks.length > 0) {
-        tl.to(mobileLinks, {
-          opacity: 0,
-          x: -10,
-          duration: 0.15,
-          stagger: 0.02
-        });
-      }
-      tl.to(mobileMenuRef.current, {
-        height: 0,
-        opacity: 0,
-        duration: 0.25
-      });
-      tl.set(mobileMenuRef.current, { display: 'none', overflow: 'hidden' });
-    }
-  }, [prefersReducedMotion]);
-
-  // Trigger mobile menu animation on state change
   useEffect(() => {
     animateMobileMenu(isOpen);
   }, [isOpen, animateMobileMenu]);
 
-  // Cleanup on unmount
   useEffect(() => {
     const timelineRef = mobileTimelineRef;
     return () => {
@@ -235,152 +160,239 @@ export default function Navbar() {
     };
   }, [clearDesktopDropdownCloseTimeout]);
 
-  // Scroll handling - hide navbar on scroll down, show on scroll up + progress bar
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-      
-      // Calculate scroll progress (0 to 100)
       const progress = documentHeight > 0 ? (currentScrollY / documentHeight) * 100 : 0;
+
       setScrollProgress(progress);
-      
-      // Hide/show navbar based on scroll direction
-      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-        // Scrolling down and past threshold
-        setIsVisible(false);
-      } else {
-        // Scrolling up
-        setIsVisible(true);
-      }
-      
+      setIsScrolled(currentScrollY > 16);
+      setIsVisible(!(currentScrollY > lastScrollY.current && currentScrollY > 90));
+
       lastScrollY.current = currentScrollY;
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Hover animation handlers
-  const handleLinkHover = (e: React.MouseEvent<HTMLAnchorElement>, entering: boolean) => {
-    if (prefersReducedMotion) return;
-    
-    const indicator = e.currentTarget.querySelector('.link-indicator');
-    if (indicator) {
-      gsap.to(indicator, {
-        scaleX: entering ? 1 : 0,
-        duration: 0.2,
-        ease: 'power2.out'
-      });
-    }
-  };
-
   return (
     <>
-      {/* Scroll Progress Bar */}
-      <div 
-        className="fixed top-0 left-0 right-0 z-60 h-1 bg-gray-200/50"
+      <div
+        className="fixed left-0 right-0 top-0 z-[60] h-1 bg-white/30"
         style={{ opacity: scrollProgress > 0 ? 1 : 0, transition: 'opacity 0.2s' }}
       >
-        <div 
-          className="h-full bg-red-600 transition-all duration-100 ease-out"
+        <div
+          className="h-full bg-gradient-to-r from-red-700 via-red-500 to-amber-400 transition-all duration-100 ease-out"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
 
-      <nav 
+      <nav
         ref={navRef}
-        className={`fixed left-0 right-0 z-50 border-b border-neutral-200 shadow-sm will-change-transform transition-all duration-300 ease-in-out ${
-          isVisible ? 'top-0 opacity-100' : '-top-24 opacity-0'
+        className={`fixed left-0 right-0 z-50 px-3 will-change-transform transition-all duration-300 ease-in-out sm:px-5 ${
+          isVisible ? 'top-3 opacity-100 sm:top-4' : '-top-28 opacity-0'
         }`}
         style={{ opacity: prefersReducedMotion ? 1 : undefined }}
-    >
-      {/* Three.js Background */}
-      <div className="absolute inset-0 bg-white/90 backdrop-blur-sm">
-        <div className="absolute inset-0 opacity-60">
-          <Canvas camera={{ position: [0, 0, 1] }}>
-            <ParticleField />
-          </Canvas>
-        </div>
-      </div>
-      
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo/Brand */}
-          <div ref={logoRef} className="shrink-0 will-change-transform">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden">
-                <Image
-                  src="/LOGO.png"
-                  alt="SCC Biñan Logo"
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                />
-              </div>
-              <div className="hidden sm:block">
-                <span className="text-xl font-bold text-neutral-800">SCC Biñan</span>
-                <span className="block text-xs text-neutral-600">PAASCU 2026</span>
-              </div>
-            </Link>
-          </div>
+      >
+        <div
+          className={`relative mx-auto max-w-7xl overflow-visible rounded-2xl border px-3 shadow-lg backdrop-blur-2xl transition-all duration-300 sm:px-4 ${
+            isScrolled
+              ? 'border-white/30 bg-white/80 shadow-red-950/10'
+              : 'border-white/40 bg-white/70 shadow-red-950/5'
+          }`}
+        >
+          <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-white/80 via-white/60 to-red-50/75" />
+          <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent" />
 
-          {/* Desktop Navigation */}
-          <div ref={desktopLinksRef} className="hidden md:flex md:items-center md:space-x-1">
+          <div
+            className={`relative flex items-center justify-between transition-all duration-300 ${
+              isScrolled ? 'h-14' : 'h-16'
+            }`}
+          >
+            <div ref={logoRef} className="shrink-0 will-change-transform">
+              <Link href="/" className="group flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-red-100 transition-transform duration-200 group-hover:scale-105">
+                  <Image
+                    src="/LOGO.png"
+                    alt="SCC Biñan Logo"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                  />
+                </div>
+                <div className="hidden min-w-0 sm:block">
+                  <span className="block text-sm font-extrabold leading-tight text-neutral-900 lg:text-base">
+                    SCC Biñan
+                  </span>
+                  <span className="block text-xs font-semibold leading-tight text-red-700">
+                    PAASCU 2026
+                  </span>
+                </div>
+              </Link>
+            </div>
+
+            <div ref={desktopLinksRef} className="hidden md:flex md:items-center md:gap-1">
+              {navigationItems.map((item) => {
+                const hasChildren = Boolean(item.children?.length);
+                const isTopLevelActive = hasChildren
+                  ? isDropdownActive(item.children)
+                  : isActiveLink(item.href);
+                const isOpenDropdown = openDesktopDropdown === item.name;
+
+                if (hasChildren) {
+                  return (
+                    <div
+                      key={item.name}
+                      className="relative"
+                      onMouseEnter={() => openDesktopDropdownMenu(item.name)}
+                      onMouseLeave={scheduleDesktopDropdownClose}
+                    >
+                      <button
+                        type="button"
+                        className={`group flex items-center gap-1 rounded-full px-3 py-2 text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                          isTopLevelActive
+                            ? 'bg-red-700 text-white shadow-sm'
+                            : 'text-neutral-700 hover:bg-white/80 hover:text-red-700'
+                        }`}
+                        onClick={() => openDesktopDropdownMenu(item.name)}
+                        aria-expanded={isOpenDropdown}
+                        aria-haspopup="menu"
+                        data-nav-item="desktop"
+                      >
+                        <span className="max-w-[170px] truncate">{item.name}</span>
+                        <ChevronDown className={`h-4 w-4 transition-transform ${isOpenDropdown ? 'rotate-180' : ''}`} />
+                      </button>
+
+                      {isOpenDropdown && (
+                        <div
+                          className="absolute left-0 top-full mt-3 min-w-[310px] rounded-2xl border border-white/60 bg-white/90 p-2 shadow-2xl shadow-red-950/15 backdrop-blur-2xl"
+                          role="menu"
+                          onMouseEnter={() => openDesktopDropdownMenu(item.name)}
+                          onMouseLeave={scheduleDesktopDropdownClose}
+                        >
+                          <div className="pointer-events-none absolute -top-2 left-8 h-4 w-4 rotate-45 border-l border-t border-white/60 bg-white/90" />
+                          {item.children?.map((child) => (
+                            <Link
+                              key={child.name}
+                              href={child.href}
+                              className={`group relative block rounded-xl px-3 py-3 transition-all duration-200 ${
+                                isActiveLink(child.href)
+                                  ? 'bg-red-50 text-red-800'
+                                  : 'text-neutral-700 hover:bg-neutral-50 hover:text-red-700'
+                              }`}
+                              role="menuitem"
+                              aria-current={isActiveLink(child.href) ? 'page' : undefined}
+                              onClick={() => setOpenDesktopDropdown(null)}
+                              data-nav-item="desktop"
+                            >
+                              <span className="block text-sm font-bold">{child.name}</span>
+                              {child.description && (
+                                <span className="mt-1 block text-xs leading-relaxed text-neutral-500 group-hover:text-neutral-600">
+                                  {child.description}
+                                </span>
+                              )}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href ?? '/'}
+                    className={`relative rounded-full px-3 py-2 text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                      isTopLevelActive
+                        ? 'bg-red-700 text-white shadow-sm'
+                        : 'text-neutral-700 hover:bg-white/80 hover:text-red-700'
+                    }`}
+                    aria-current={isTopLevelActive ? 'page' : undefined}
+                    data-nav-item="desktop"
+                  >
+                    <span className="block max-w-[190px] truncate">{item.name}</span>
+                  </Link>
+                );
+              })}
+            </div>
+
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/80 text-neutral-800 shadow-sm ring-1 ring-neutral-200 transition-colors hover:text-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-red-600"
+                aria-expanded={isOpen}
+                aria-controls="mobile-menu"
+              >
+                <span className="sr-only">{isOpen ? 'Close main menu' : 'Open main menu'}</span>
+                {isOpen ? (
+                  <X className="block h-6 w-6" aria-hidden="true" />
+                ) : (
+                  <Menu className="block h-6 w-6" aria-hidden="true" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="mobile-menu"
+          ref={mobileMenuRef}
+          className="md:hidden will-change-[height,opacity]"
+          style={{ display: 'none', height: 0, opacity: 0 }}
+          aria-hidden={!isOpen}
+        >
+          <div className="mx-auto mt-3 max-w-7xl space-y-2 rounded-2xl border border-white/60 bg-white/90 p-2 shadow-2xl shadow-red-950/15 backdrop-blur-2xl">
             {navigationItems.map((item) => {
               const hasChildren = Boolean(item.children?.length);
               const isTopLevelActive = hasChildren
                 ? isDropdownActive(item.children)
                 : isActiveLink(item.href);
-              const isOpenDropdown = openDesktopDropdown === item.name;
+              const isMobileSectionOpen = openMobileSection === item.name;
 
               if (hasChildren) {
                 return (
-                  <div
-                    key={item.name}
-                    className="relative"
-                    onMouseEnter={() => openDesktopDropdownMenu(item.name)}
-                    onMouseLeave={scheduleDesktopDropdownClose}
-                  >
+                  <div key={item.name} className="overflow-hidden rounded-xl border border-neutral-100 bg-white/70">
                     <button
                       type="button"
-                      className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
+                      className={`flex w-full items-center justify-between px-3 py-3 text-left text-base font-bold transition-colors duration-200 ${
                         isTopLevelActive
-                          ? 'text-primary-600 bg-primary-50'
-                          : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
+                          ? 'bg-red-50 text-red-800'
+                          : 'text-neutral-800 hover:bg-neutral-50 hover:text-red-700'
                       }`}
-                      onClick={() => openDesktopDropdownMenu(item.name)}
-                      aria-expanded={isOpenDropdown}
-                      aria-haspopup="menu"
-                      data-nav-item="desktop"
+                      onClick={() =>
+                        setOpenMobileSection((current) => (current === item.name ? null : item.name))
+                      }
+                      aria-expanded={isMobileSectionOpen}
+                      data-mobile-nav-item
                     >
                       <span>{item.name}</span>
-                      <ChevronDown className={`h-4 w-4 transition-transform ${isOpenDropdown ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`h-4 w-4 transition-transform ${isMobileSectionOpen ? 'rotate-180' : ''}`} />
                     </button>
-
-                    {isOpenDropdown && (
-                      <div
-                        className="absolute left-0 top-full min-w-[260px] border border-neutral-200 bg-white rounded-lg shadow-md p-1"
-                        role="menu"
-                        onMouseEnter={() => openDesktopDropdownMenu(item.name)}
-                        onMouseLeave={scheduleDesktopDropdownClose}
-                      >
+                    {isMobileSectionOpen && (
+                      <div className="border-t border-neutral-100 bg-white/80 p-1">
                         {item.children?.map((child) => (
                           <Link
                             key={child.name}
                             href={child.href}
-                            className={`block px-3 py-2 text-sm rounded-md transition-colors duration-200 ${
+                            className={`block rounded-lg px-3 py-2.5 transition-colors duration-200 ${
                               isActiveLink(child.href)
-                                ? 'text-primary-600 bg-primary-50'
-                                : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
+                                ? 'bg-red-50 font-semibold text-red-800'
+                                : 'text-neutral-700 hover:bg-neutral-50 hover:text-red-700'
                             }`}
-                            role="menuitem"
+                            onClick={() => setIsOpen(false)}
                             aria-current={isActiveLink(child.href) ? 'page' : undefined}
-                            onMouseEnter={(e) => handleLinkHover(e, true)}
-                            onMouseLeave={(e) => handleLinkHover(e, false)}
-                            data-nav-item="desktop"
+                            data-mobile-nav-item
                           >
-                            {child.name}
+                            <span className="block text-sm font-bold">{child.name}</span>
+                            {child.description && (
+                              <span className="mt-0.5 block text-xs leading-relaxed text-neutral-500">
+                                {child.description}
+                              </span>
+                            )}
                           </Link>
                         ))}
                       </div>
@@ -393,124 +405,22 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href ?? '/'}
-                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
+                  className={`block rounded-xl px-3 py-3 text-base font-bold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 ${
                     isTopLevelActive
-                      ? 'text-primary-600 bg-primary-50'
-                      : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
+                      ? 'bg-red-700 text-white'
+                      : 'text-neutral-800 hover:bg-neutral-50 hover:text-red-700'
                   }`}
+                  onClick={() => setIsOpen(false)}
                   aria-current={isTopLevelActive ? 'page' : undefined}
-                  onMouseEnter={(e) => handleLinkHover(e, true)}
-                  onMouseLeave={(e) => handleLinkHover(e, false)}
-                  data-nav-item="desktop"
+                  data-mobile-nav-item
                 >
                   {item.name}
-                  <span
-                    className="link-indicator absolute bottom-0 left-3 right-3 h-0.5 bg-primary-500 origin-left"
-                    style={{ transform: 'scaleX(0)' }}
-                  />
                 </Link>
               );
             })}
           </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-lg text-neutral-700 hover:text-primary-600 hover:bg-primary-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 transition-colors"
-              aria-expanded={isOpen}
-              aria-controls="mobile-menu"
-            >
-              <span className="sr-only">{isOpen ? 'Close main menu' : 'Open main menu'}</span>
-              {isOpen ? (
-                <X className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
-              )}
-            </button>
-          </div>
         </div>
-      </div>
-
-      {/* Mobile menu */}
-      <div
-        id="mobile-menu"
-        ref={mobileMenuRef}
-        className="md:hidden will-change-[height,opacity]"
-        style={{ display: 'none', height: 0, opacity: 0 }}
-        aria-hidden={!isOpen}
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-neutral-100">
-          {navigationItems.map((item) => {
-            const hasChildren = Boolean(item.children?.length);
-            const isTopLevelActive = hasChildren
-              ? isDropdownActive(item.children)
-              : isActiveLink(item.href);
-            const isMobileSectionOpen = openMobileSection === item.name;
-
-            if (hasChildren) {
-              return (
-                <div key={item.name} className="border border-neutral-100 rounded-lg overflow-hidden">
-                  <button
-                    type="button"
-                    className={`w-full flex items-center justify-between px-3 py-2 text-base font-medium transition-colors duration-200 ${
-                      isTopLevelActive
-                        ? 'text-primary-600 bg-primary-50'
-                        : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
-                    }`}
-                    onClick={() =>
-                      setOpenMobileSection((current) => (current === item.name ? null : item.name))
-                    }
-                    aria-expanded={isMobileSectionOpen}
-                    data-mobile-nav-item
-                  >
-                    <span>{item.name}</span>
-                    <ChevronDown className={`h-4 w-4 transition-transform ${isMobileSectionOpen ? 'rotate-180' : ''}`} />
-                  </button>
-                  {isMobileSectionOpen && (
-                    <div className="bg-white border-t border-neutral-100">
-                      {item.children?.map((child) => (
-                        <Link
-                          key={child.name}
-                          href={child.href}
-                          className={`block px-4 py-2 text-base transition-colors duration-200 ${
-                            isActiveLink(child.href)
-                              ? 'text-primary-600 bg-primary-50 font-medium'
-                              : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
-                          }`}
-                          onClick={() => setIsOpen(false)}
-                          aria-current={isActiveLink(child.href) ? 'page' : undefined}
-                          data-mobile-nav-item
-                        >
-                          {child.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            }
-
-            return (
-              <Link
-                key={item.name}
-                href={item.href ?? '/'}
-                className={`block px-3 py-2 text-base font-medium rounded-lg transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
-                  isTopLevelActive
-                    ? 'text-primary-600 bg-primary-50'
-                    : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
-                }`}
-                onClick={() => setIsOpen(false)}
-                aria-current={isTopLevelActive ? 'page' : undefined}
-                data-mobile-nav-item
-              >
-                {item.name}
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-    </nav>
+      </nav>
     </>
   );
 }

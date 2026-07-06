@@ -56,7 +56,7 @@ export default function ConclusionPage() {
     <main className="min-h-screen bg-neutral-100">
       <Hero
         badge="Part IV"
-        title="Conclusion"
+        title="Part IV : Conclusion"
         subtitle="PAASCU Resurvey Visit"
         size="md"
         align="center"

@@ -17,11 +17,6 @@ export default function MouseScrollIndicator({
       <div className="mouse-scroll-indicator__mouse">
         <div className="mouse-scroll-indicator__wheel" />
       </div>
-      <div className="mouse-scroll-indicator__arrows">
-        <span className="mouse-scroll-indicator__arrow unu" />
-        <span className="mouse-scroll-indicator__arrow doi" />
-        <span className="mouse-scroll-indicator__arrow trei" />
-      </div>
     </div>
   );
 }

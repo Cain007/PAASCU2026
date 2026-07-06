@@ -42,7 +42,7 @@ export default function DirectressPrincipalMessagePage() {
     <main className="min-h-screen bg-neutral-50">
       <Hero
         badge="Message"
-        title="School Head / Principal Message"
+        title="Part VIII : School Head / Principal Message"
         subtitle="Leadership message for the PAASCU resurvey visit"
         size="md"
         align="center"

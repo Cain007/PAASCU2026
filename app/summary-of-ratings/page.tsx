@@ -23,7 +23,7 @@ export default function FollowUpActionPage() {
     <main className="min-h-screen bg-neutral-100">
       <Hero
         badge="Follow-up Action"
-        title="Summary of Ratings"
+        title="Part VI : Summary of Ratings"
         subtitle="Action areas for the PAASCU resurvey visit"
         size="md"
         align="center"

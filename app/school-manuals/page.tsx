@@ -24,7 +24,7 @@ export default function SchoolManualsPage() {
     <main className="min-h-screen bg-neutral-100">
       <Hero
         badge="Manuals"
-        title="School Manuals"
+        title="Part VII : School Manuals"
         subtitle="Policy and operations references"
         size="md"
         align="center"
