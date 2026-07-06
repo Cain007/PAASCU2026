@@ -11,42 +11,42 @@ export const metadata: Metadata = {
 const conclusionItems = [
   {
     name: 'Leadership and\nGovernance',
-    image: '/conclusion/leadership.png',
+    image: '/props/leadership2.png',
     link: 'https://docs.google.com/document/d/193QyxlABd3EWPBoH9ejR-uGKvFAOjX0T/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {
     name: 'Quality\nAssurance',
-    image: '/conclusion/quality.png',
+    image: '/props/quality2.png',
     link: 'https://docs.google.com/document/d/1gdXss_20n4fRiH_lnCchsxQ0Gwi9Lfp8/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {
     name: 'Resource\nManagement',
-    image: '/conclusion/resource.png',
+    image: '/props/resource2.png',
     link: 'https://docs.google.com/document/d/1g_UJCjzR16oFFdwpDwbigXmqbd4Dyt4F/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {
     name: 'Teaching and\nLearning',
-    image: '/conclusion/teaching.png',
+    image: '/props/teaching2.png',
     link: 'https://docs.google.com/document/d/1QavIltQgkWFBIEyaSSXli_G2ygTvkkrG/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {
     name: 'Student\nServices',
-    image: '/conclusion/student.png',
+    image: '/props/student2.png',
     link: 'https://docs.google.com/document/d/1iBxtgnXyY0ScxV3P0iZXmsoTat8dY2To/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {
     name: 'External\nRelations',
-    image: '/conclusion/external.png',
+    image: '/props/external2.png',
     link: 'https://docs.google.com/document/d/1xabSDyJwpmBRaaLFHVOmJs0GkL7rcBSQ/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {
     name: 'Research',
-    image: '/conclusion/research.png',
+    image: '/props/research2.png',
     link: 'https://docs.google.com/document/d/1O0meiFERAgJdRTe0i2v1UXLBrbN8_x2I/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {
     name: 'Results',
-    image: '/conclusion/result.png',
+    image: '/props/result2.png',
     link: 'https://docs.google.com/document/d/1L3AS13ZBgB2sZRwh2JNC2RXgBgHOKZTJ/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
 ];

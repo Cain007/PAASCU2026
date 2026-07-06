@@ -11,37 +11,37 @@ export const metadata: Metadata = {
 const followUpAreas = [
   {
     name: 'Administration',
-    image: '/follow-up-action-page/administrations.png',
+    image: '/follow-up/administration2.png',
     link: 'https://drive.google.com/drive/folders/1uAcKo2NBTF1jIq-eKvlDyo4B8SWo-6N4?usp=sharing',
   },
   {
     name: 'Faculty',
-    image: '/follow-up-action-page/facultys.png',
+    image: '/follow-up/faculty2.png',
     link: 'https://drive.google.com/drive/folders/1YuvvzpKUcMIQkhHUz0pSSR8KjiaeqvdM?usp=drive_link',
   },
   {
     name: 'Curriculum and\nInstruction',
-    image: '/follow-up-action-page/curriculum.png',
+    image: '/follow-up/curriculum2.png',
     link: 'https://drive.google.com/drive/folders/1IZNEJP3d19lSFlXhTnEcMtwQn0Ts5Np4?usp=drive_link',
   },
   {
     name: 'Library and\nAudio-Visual Center',
-    image: '/follow-up-action-page/library.png',
+    image: '/follow-up/library2.png',
     link: 'https://drive.google.com/drive/folders/1ciaJtJTPdUMcqGlm5nbvqYLGM5bsAIyB?usp=drive_link',
   },
   {
     name: 'Laboratories /\nFacilities',
-    image: '/follow-up-action-page/laboratory.png',
+    image: '/follow-up/laboratory2.png',
     link: 'https://drive.google.com/drive/folders/1ZoHZn5Ng2umjh7AJ9JI7wYzfJSm0iorn?usp=drive_link',
   },
   {
     name: 'Student\nServices',
-    image: '/follow-up-action-page/Student.png',
+    image: '/follow-up/student2.png',
     link: 'https://drive.google.com/drive/folders/1a_Zl4poOjD0iwwkHgtEdyEBRdDYEjKcX?usp=drive_link',
   },
   {
     name: 'School and\nCommunity',
-    image: '/follow-up-action-page/School.png',
+    image: '/follow-up/school2.png',
     link: 'https://drive.google.com/drive/folders/16qOUMYHn6V5VcnyWG4PCXGT4WIB1JffX?usp=drive_link',
   },
 ];

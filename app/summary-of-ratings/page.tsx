@@ -4,13 +4,13 @@ import Hero from '@/components/ui/Hero';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'Summary of Ratings | SCSJ-IBED PAASCU 2026',
+  title: 'Summary of Ratings | SCC-IBED PAASCU 2026',
   description: 'Summary of ratings for the PAASCU resurvey visit.',
 };
 const followUpAreas = [
   {
     name: 'Summary of Ratings',
-    image: '/summary-of-ratings/summary1.png',
+    image: '/summary-of-ratings/summary2.png',
     link: 'https://drive.google.com/drive/folders/1CtgcQGriHbMHoOdmVCREh2q-qgRj_xob?usp=drive_link',
   },
  

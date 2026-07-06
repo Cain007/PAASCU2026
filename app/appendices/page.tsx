@@ -12,42 +12,42 @@ export const metadata: Metadata = {
 const analysisAreas = [
   {
     name: 'Leadership and\nGovernance',
-    image: '/analysis-of-the-school/leadership1.png',
+    image: '/props/leadership2.png',
     link: 'https://drive.google.com/drive/folders/1vsiBDowINMQHUvMvlmk91zv_Pkku6xMo?usp=sharing',
   },
   {
     name: 'Quality\nAssurance',
-    image: '/analysis-of-the-school/quality1.png',
+    image: '/props/quality2.png',
     link: 'https://drive.google.com/drive/folders/1qs69TOOEN1TlMn-yrhP0rU9mYSAOoJKu?usp=sharing',
   },
   {
     name: 'Resource\nManagement',
-    image: '/analysis-of-the-school/resource1.png',
+    image: '/props/resource2.png',
     link: 'https://drive.google.com/drive/folders/1RxZeW4fm9mLBHF40n3PsbGaosc0ZXOmw?usp=sharing',
   },
   {
     name: 'Teaching and\nLearning',
-    image: '/analysis-of-the-school/teaching1.png',
+    image: '/props/teaching2.png',
     link: 'https://drive.google.com/drive/folders/1akriVUcZmGbJJHIsvtw-crKudBX9znWf?usp=sharing',
   },
   {
     name: 'Student\nServices',
-    image: '/analysis-of-the-school/student1.png',
+    image: '/props/student2.png',
     link: 'https://drive.google.com/drive/folders/1NbDIB_Urt5mDIDAmebGP2iy45yp6jMaW?usp=sharing',
   },
   {
     name: 'External\nRelations',
-    image: '/analysis-of-the-school/external1.png',
+    image: '/props/external2.png',
     link: 'https://drive.google.com/drive/folders/1iOBeBK0PlCB-9NfQUuSD8etyq0ZG75L7?usp=sharing',
   },
   {
     name: 'Research',
-    image: '/analysis-of-the-school/research1.png',
+    image: '/props/research2.png',
     link: 'https://drive.google.com/drive/folders/1Ymon49pHyNYHrruThjtqzv9m2jttFmHP?usp=sharing',
   },
   {
     name: 'Results',
-    image: '/analysis-of-the-school/result1.png',
+    image: '/props/result2.png',
     link: 'https://drive.google.com/drive/folders/1wfQDlugFVV6MAZznQF9PpaNWqV76kgZl?usp=sharing',
   },
 ];
@@ -57,7 +57,7 @@ export default function AnalysisOfTheSchoolPage() {
     <main className="min-h-screen bg-neutral-100">
       <Hero
         badge="Analysis of the School"
-        title="Institutional Analysis"
+        title="SUMMARY OF APPENDICES"
         subtitle="PAASCU Resurvey Visit Areas"
         size="md"
         align="center"
@@ -67,7 +67,7 @@ export default function AnalysisOfTheSchoolPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 text-center">
             <h1 className="text-2xl font-bold text-neutral-900 sm:text-3xl">
-              Analysis of the School
+              Evidence of Implementation
             </h1>
 
             <p className="mt-2 text-xs text-neutral-600 sm:text-sm">

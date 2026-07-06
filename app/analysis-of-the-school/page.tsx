@@ -11,42 +11,42 @@ export const metadata: Metadata = {
 const analysisAreas = [
   {
     name: 'Leadership and\nGovernance',
-    image: '/analysis-of-the-school/leadership1.png',
+    image: '/props/leadership2.png',
     link: 'https://docs.google.com/document/d/1ob6YzLGde8N89-l17WPwaELbCp-h1oTD/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {
     name: 'Quality\nAssurance',
-    image: '/analysis-of-the-school/quality1.png',
+    image: '/props/quality2.png',
     link: 'https://docs.google.com/document/d/1WzNQFcahuERBotoE4Kk42_-NusRPKg2U/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {
     name: 'Resource\nManagement',
-    image: '/analysis-of-the-school/resource1.png',
+    image: '/props/resource2.png',
     link: 'https://docs.google.com/document/d/1qjaO4I1s3JEM4U_nQpPyZH2YUoj4YkVa/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {
     name: 'Teaching and\nLearning',
-    image: '/analysis-of-the-school/teaching1.png',
+    image: '/props/teaching2.png',
     link: 'https://docs.google.com/document/d/1W5RmvCXvSYp_CxoEtIAm8P6PqlGblczL/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {
     name: 'Student\nServices',
-    image: '/analysis-of-the-school/student1.png',
+    image: '/props/student2.png',
     link: 'https://docs.google.com/document/d/1GiNf-ZXDkTRKVjDrbZM_DAJZdNcGgBii/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {
     name: 'External\nRelations',
-    image: '/analysis-of-the-school/external1.png',
+    image: '/props/external2.png',
     link: 'https://docs.google.com/document/d/1y0F6NfwYUXAZatKD0fGqEVOGah6B3URh/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {
     name: 'Research',
-    image: '/analysis-of-the-school/research1.png',
+    image: '/props/research2.png',
     link: 'https://docs.google.com/document/d/1GiOFZVtR0PoqTgppfvDkR3eCGEPq0dRz/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {
     name: 'Results',
-    image: '/analysis-of-the-school/result1.png',
+    image: '/props/result2.png',
     link: 'https://docs.google.com/document/d/1T0BWGZnKuYEQMjSfQM-60fg2bQyrAEf9/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
 ];

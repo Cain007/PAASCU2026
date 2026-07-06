@@ -104,7 +104,7 @@ export default function Home() {
               <div className="relative overflow-hidden rounded-xl shadow-xl border border-gray-100">
                 <Image
                   src="/schoolFb1.png"
-                  alt="Sta. Catalina College Biñan Facebook Page"
+                  alt="Sta. Catalina College Inc. Biñan Facebook Page"
                   width={600}
                   height={400}
                   className="w-full h-auto object-cover"
@@ -126,7 +126,7 @@ export default function Home() {
                 <span className="block text-red-600">Our Community</span>
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Follow our official Facebook page for the latest updates, announcements, events, and highlights from Sta. Catalina College Biñan. Join our growing community of students, parents, alumni, and educators.
+                Follow our official Facebook page for the latest updates, announcements, events, and highlights from Sta. Catalina College Inc. Biñan. Join our growing community of students, parents, alumni, and educators.
               </p>
 
               <a
@@ -217,7 +217,7 @@ export default function Home() {
 
       <CTASection
         title="Ready to Explore?"
-        description="Discover our comprehensive self-study documentation and see how SCSJ-IBED meets PAASCU accreditation standards."
+        description="Discover our comprehensive self-study documentation and see how SCC-Biñan meets PAASCU accreditation standards."
         buttons={[
           { label: 'Start with School Profile', href: '/school-profile' },
           { label: 'View Follow-up Actions', href: '/follow-up-action', variant: 'secondary' },

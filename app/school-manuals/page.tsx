@@ -16,8 +16,8 @@ const manualItems = [
   'Student Handbook',
 ];
 
-const firstRowItems = manualItems.slice(0, 3);
-const secondRowItems = manualItems.slice(3);
+const firstRowItems = manualItems.slice(0, 4);
+const secondRowItems = manualItems.slice(4);
 
 export default function SchoolManualsPage() {
   return (
@@ -31,45 +31,66 @@ export default function SchoolManualsPage() {
       />
 
       <section className="px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
-        <div className="mx-auto max-w-4xl space-y-8">
-          <div className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-            {firstRowItems.map((item, index) => (
-              <article key={item} className="mx-auto w-full max-w-[210px]">
-                <div className="bg-white p-2 shadow-sm ring-1 ring-neutral-200">
-                  <Image
-                    src="/PAASCU.png"
-                    alt={`${item} manual card`}
-                    width={900}
-                    height={1400}
-                    className="h-auto w-full"
-                    priority={index < 2}
-                  />
-                </div>
-                <h2 className="mt-2 text-center text-base font-extrabold uppercase leading-tight tracking-[0.01em] text-neutral-900 sm:text-lg">
-                  {item}
-                </h2>
-              </article>
-            ))}
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-8 text-center">
+            <h1 className="text-2xl font-bold text-neutral-900 sm:text-3xl">
+              School Manuals
+            </h1>
+
+            <p className="mt-2 text-xs text-neutral-600 sm:text-sm">
+              Policy and operations references
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 max-w-[440px] mx-auto">
-            {secondRowItems.map((item, index) => (
-              <article key={item} className="mx-auto w-full max-w-[210px]">
-                <div className="bg-white p-2 shadow-sm ring-1 ring-neutral-200">
-                  <Image
-                    src="/PAASCU.png"
-                    alt={`${item} manual card`}
-                    width={900}
-                    height={1400}
-                    className="h-auto w-full"
-                    priority={index === 0}
-                  />
-                </div>
-                <h2 className="mt-2 text-center text-base font-extrabold uppercase leading-tight tracking-[0.01em] text-neutral-900 sm:text-lg">
-                  {item}
-                </h2>
-              </article>
-            ))}
+          <div className="space-y-8">
+            {/* First Row */}
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {firstRowItems.map((item, index) => (
+                <article
+                  key={item}
+                  className="mx-auto w-full max-w-[540px]"
+                >
+                  <div className="bg-white p-2 shadow-sm ring-1 ring-neutral-200 transition duration-200 hover:scale-[1.02] hover:shadow-lg">
+                    <Image
+                      src="/PAASCU.png"
+                      alt={`${item} manual card`}
+                      width={1500}
+                      height={2333}
+                      className="h-auto w-full"
+                      priority={index < 2}
+                    />
+                  </div>
+
+                  <h2 className="mt-2 min-h-[60px] text-center text-base font-extrabold uppercase leading-tight tracking-[0.01em] text-neutral-900 sm:text-lg">
+                    {item}
+                  </h2>
+                </article>
+              ))}
+            </div>
+
+            {/* Second Row */}
+            <div className="flex flex-wrap justify-center gap-8">
+              {secondRowItems.map((item) => (
+                <article
+                  key={item}
+                  className="w-full max-w-[540px] sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]"
+                >
+                  <div className="bg-white p-2 shadow-sm ring-1 ring-neutral-200 transition duration-200 hover:scale-[1.02] hover:shadow-lg">
+                    <Image
+                      src="/PAASCU.png"
+                      alt={`${item} manual card`}
+                      width={1500}
+                      height={2333}
+                      className="h-auto w-full"
+                    />
+                  </div>
+
+                  <h2 className="mt-2 min-h-[60px] text-center text-base font-extrabold uppercase leading-tight tracking-[0.01em] text-neutral-900 sm:text-lg">
+                    {item}
+                  </h2>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>

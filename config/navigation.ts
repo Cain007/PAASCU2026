@@ -51,10 +51,6 @@ export const navigationItems: NavItem[] = [
     ],
   },
   {
-    name: 'Other Resources for Accreditation',
-    href: '/other-resources-for-accreditation',
-  },
-  {
     name: 'School Manuals',
     href: '/school-manuals',
   },
