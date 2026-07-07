@@ -37,7 +37,7 @@ const analysisAreas = [
   },
   {
     name: 'External\nRelations',
-    image: '/props/external2.png',
+    image: '/props/external3.png',
     link: 'https://drive.google.com/drive/folders/1iOBeBK0PlCB-9NfQUuSD8etyq0ZG75L7?usp=sharing',
   },
   {

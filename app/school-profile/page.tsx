@@ -92,6 +92,12 @@ const timelineEvents = [
     description: 'Celebrated 80th Founding Anniversary with the theme: "Sabayang-Sulyap at pagTanaw sa Adhikaing Catherineans".',
     icon: Award,
   },
+  {
+    year: '2026',
+    title: '84th Founding Anniversary',
+    description: 'Celebrated 84th Founding Anniversary with a Mass of Thanksgiving, motorcade, medical mission, and programs from SCC personnel, students, and alumni celebrating unity and shared mission.',
+    icon: Award,
+  },
 ];
 
 export default function SchoolProfilePage() {
@@ -170,7 +176,7 @@ export default function SchoolProfilePage() {
                     <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
                       <Calendar className="w-6 h-6 text-amber-400" />
                     </div>
-                    <div className="text-4xl font-bold text-white mb-1">83+</div>
+                    <div className="text-4xl font-bold text-white mb-1">84</div>
                     <div className="text-white/70 text-sm">Years of Excellence</div>
                   </div>
                   
@@ -179,8 +185,8 @@ export default function SchoolProfilePage() {
                     <div className="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center mb-4">
                       <Cross className="w-6 h-6 text-red-400" />
                     </div>
-                    <div className="text-2xl font-bold text-white mb-1">Dominican</div>
-                    <div className="text-white/70 text-sm">Catholic Institution</div>
+                    <div className="text-2xl font-bold text-white mb-1">Dominican Sisters</div>
+                    <div className="text-white/70 text-sm">Of St. Catherine of Siena</div>
                   </div>
                   
                   {/* First Catholic School */}
@@ -463,8 +469,31 @@ export default function SchoolProfilePage() {
                 </div>
               </AnimatedSection>
 
-              {/* Closing Statement */}
               <AnimatedSection direction="up" delay={300}>
+                <div className="bg-linear-to-br from-amber-50 to-red-50 p-6 lg:p-8 rounded-2xl border border-amber-100">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 bg-amber-600 rounded-xl flex items-center justify-center shrink-0">
+                      <Calendar className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">84th Founding Anniversary</h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        Sta. Catalina College, Inc. Biñan celebrated its <span className="font-bold text-amber-700">84th Founding Anniversary</span> through a day filled with meaningful and joyful activities. 
+                        The celebration began with a Mass of Thanksgiving, followed by a motorcade and medical mission. In the afternoon, the program continued with presentations from SCC personnel, 
+                        students, and alumni, along with a special surprise number that brought excitement to the celebration. The event also featured a Bingo and Raffle for a Cause, 
+                        promoting unity and support within the community. This celebration truly reflected the strong spirit, unity, and shared mission of every Catherinean as we continue 
+                        our journey toward greater milestones.
+                      </p>
+                      <p className="text-gray-500 leading-relaxed mt-3 italic">
+                        &quot;Give thanks to the Lord, for He is good; His love endures forever.&quot; — Psalm 107:1
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              {/* Closing Statement */}
+              <AnimatedSection direction="up" delay={400}>
                 <div className="max-w-3xl mx-auto text-center mt-12">
                   <div className="bg-linear-to-r from-red-600 to-rose-700 p-8 lg:p-12 rounded-2xl text-white">
                     <h2 className="text-2xl lg:text-3xl font-bold mb-4">Our Continuing Commitment</h2>

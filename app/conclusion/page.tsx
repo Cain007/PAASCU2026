@@ -36,7 +36,7 @@ const conclusionItems = [
   },
   {
     name: 'External\nRelations',
-    image: '/props/external2.png',
+    image: '/props/external3.png',
     link: 'https://docs.google.com/document/d/1xabSDyJwpmBRaaLFHVOmJs0GkL7rcBSQ/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
   },
   {

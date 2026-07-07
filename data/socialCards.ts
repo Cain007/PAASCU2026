@@ -54,6 +54,15 @@ export const socialCardsLeft: SocialCard[] = [
     facebookUrl: "https://www.facebook.com/share/p/1BJ97BjHrX/",
   },
 
+  {
+    id: "student-council",
+    title: "PERSONNEL ORIENTATION 2026",
+    description: "Successfully conducted its Personnel Orientation 2026, formally welcoming new staff members to School Year 2026–2027 through a series of orientation activities.",
+    image: "/card-carousel/left/personnel.jpg",
+    facebookUrl: "https://www.facebook.com/share/1cddmdLPVo/",
+  },
+
+
   
 
 ];
@@ -105,7 +114,7 @@ export const socialCardsRight: SocialCard[] = [
     title: "SACC ELECTION 2026 OFFICIAL RESULTS",
     description: "Congratulations to the newly elected leaders of the 𝐒𝐭𝐮𝐝𝐞𝐧𝐭 𝐀𝐜𝐭𝐢𝐯𝐢𝐭𝐲 𝐂𝐨𝐨𝐫𝐝𝐢𝐧𝐚𝐭𝐢𝐧𝐠 𝐂𝐨𝐮𝐧𝐜𝐢𝐥 (𝐒𝐀𝐂𝐂) 𝐟𝐨𝐫 𝐒𝐜𝐡𝐨𝐨𝐥 𝐘𝐞𝐚𝐫 𝟐𝟎𝟐𝟔–𝟐𝟎𝟐𝟕!",
     image: "/card-carousel/right/election.jpg",
-    facebookUrl: "https://www.facebook.com/share/p/197ZXNbAxu/",
+    facebookUrl: "https://www.facebook.com/share/191rwdJ1Ec/",
   },
   
 ];
