@@ -13,23 +13,23 @@ export const metadata: Metadata = {
 const manualItems = [
   {
     name: 'Administrative Manual',
-    image: '/PAASCU.png', // Update with specific image path if needed
+    image: '/school-manual/admin2.png', // Update with specific image path if needed
     link: '#', // Update with the actual drive link
   },
   {
-    name: 'Auxiliary and Support Personnel Manual',
-    image: '/PAASCU.png',
-    link: '#',
+    name: 'Standard\n Operating Guide',
+    image: '/school-manual/standard2.png',
+    link: 'https://drive.google.com/file/d/1ZcLSI-8ojWOgdpPWicRxytphwJQ-U3za/view?usp=sharing',
   },
   {
     name: 'Faculty Manual',
-    image: '/PAASCU.png',
+    image: '/school-manual/faculty2.png',
     link: '#',
   },
   
   {
     name: 'Student Handbook',
-    image: '/PAASCU.png',
+    image: '/school-manual/student2.png',
     link: '#',
   },
 ];

@@ -12,7 +12,7 @@ const analysisAreas = [
   {
     name: 'Leadership and\nGovernance',
     image: '/props/leadership2.png',
-    link: 'https://docs.google.com/document/d/1ob6YzLGde8N89-l17WPwaELbCp-h1oTD/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
+    link: 'https://drive.google.com/file/d/1LPQ-d0Ayqr9wSo4CLwFNPueOezMo9J1I/view?usp=sharing',
   },
   {
     name: 'Quality\nAssurance',
