@@ -11,7 +11,7 @@ import AnimatedSection from '@/components/ui/AnimatedSection';
 import SocialConnect from '@/components/ui/SocialConnect';
 
 export const metadata: Metadata = {
-  title: 'Home | SCSJ-IBED PAASCU 2026',
+  title: 'Home | SCC Biñan PAASCU 2026',
   description: 'Welcome to the SCSJ-IBED PAASCU Accreditation 2026 portal. Explore our institutional profile, accreditation documents, and comprehensive analysis.',
 };
 

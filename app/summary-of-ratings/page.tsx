@@ -4,7 +4,7 @@ import Hero from '@/components/ui/Hero';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'Summary of Ratings | SCC-IBED PAASCU 2026',
+  title: 'Summary of Ratings | SCC Biñan PAASCU 2026',
   description: 'Summary of ratings for the PAASCU resurvey visit.',
 };
 const followUpAreas = [

@@ -4,7 +4,7 @@ import Hero from '@/components/ui/Hero';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'Conclusion | SCSJ-IBED PAASCU 2026',
+  title: 'Conclusion | SCC Biñan PAASCU 2026',
   description: 'Conclusion highlights for the PAASCU resurvey visit.',
 };
 

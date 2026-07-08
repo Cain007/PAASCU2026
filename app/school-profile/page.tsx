@@ -9,7 +9,7 @@ import { Calendar, Award, GraduationCap, Building, BookOpen, Users, FileText, Ch
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'School Profile | SCSJ-IBED PAASCU 2026',
+  title: 'School Profile | SCC Biñan PAASCU 2026',
   description: 'Discover the rich history of Sta. Catalina College, Inc. - the first Catholic school in Biñan, Laguna, established in 1942.',
 };
 

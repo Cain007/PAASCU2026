@@ -4,7 +4,7 @@ import Hero from '@/components/ui/Hero';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'School Manuals | SCSJ-IBED PAASCU 2026',
+  title: 'School Manuals | SCC Biñan PAASCU 2026',
   description: 'School manuals and policy references for accreditation.',
 };
 

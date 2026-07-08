@@ -5,7 +5,7 @@ import Footer from '@/components/layout/Footer';
 import PrincipalPortrait from '@/components/ui/PrincipalPortrait';
 
 export const metadata: Metadata = {
-  title: 'Directress/Principal Message | SCSJ-IBED PAASCU 2026',
+  title: 'Directress/Principal Message | SCC Biñan PAASCU 2026',
   description: 'Official message from the Directress/Principal.',
 };
 
