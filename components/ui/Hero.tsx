@@ -101,7 +101,7 @@ export default function Hero({
       {/* Background Image - Same as Home page */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/schoolbldg.png"
+          src="/schoolbldg3.png"
           alt=""
           fill
           className="object-cover"

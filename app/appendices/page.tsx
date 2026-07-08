@@ -58,7 +58,7 @@ export default function AnalysisOfTheSchoolPage() {
       <Hero
         badge="Analysis of the School"
         title="Part V : Summary of Appendices"
-        subtitle="PAASCU Resurvey Visit Areas"
+        subtitle="Compilation of Supporting Evidence and Reference Materials"
         size="md"
         align="center"
       />

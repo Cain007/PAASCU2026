@@ -55,7 +55,7 @@ export default function FollowUpActionPage() {
       <Hero
         badge="Follow-up Action"
         title="Part II : Follow-up Action"
-        subtitle="Action areas for the PAASCU resurvey visit"
+        subtitle="Actions Taken in Response to Previous PAASCU Recommendations"
         size="md"
         align="center"
       />

@@ -24,7 +24,7 @@ export default function FollowUpActionPage() {
       <Hero
         badge="Follow-up Action"
         title="Part VI : Summary of Ratings"
-        subtitle="Action areas for the PAASCU resurvey visit"
+        subtitle="Consolidated Evaluation Results and Accreditation Assessment"
         size="md"
         align="center"
       />

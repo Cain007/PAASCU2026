@@ -109,7 +109,7 @@ export default function SchoolProfilePage() {
         <section className="sticky top-0 h-screen overflow-hidden flex items-center">
           {/* Background Image */}
           <Image
-            src="/schoolbldg.png"
+            src="/schoolbldg3.png"
             alt="School Building"
             fill
             className="object-cover"

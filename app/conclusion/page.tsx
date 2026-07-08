@@ -57,7 +57,7 @@ export default function ConclusionPage() {
       <Hero
         badge="Part IV"
         title="Part IV : Conclusion"
-        subtitle="PAASCU Resurvey Visit"
+        subtitle="Overall Assessment, Key Strengths, and Continuous Quality Improvement"
         size="md"
         align="center"
       />

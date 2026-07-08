@@ -14,7 +14,7 @@ export default function WelcomeHero() {
     >
       <div className="absolute inset-0">
         <Image
-          src="/schoolbldg.png"
+          src="/schoolbldg3.png"
           alt=""
           fill
           className="object-cover"
