@@ -12,42 +12,42 @@ const analysisAreas = [
   {
     name: 'Leadership and\nGovernance',
     image: '/props/leadership2.png',
-    link: 'https://drive.google.com/file/d/1LPQ-d0Ayqr9wSo4CLwFNPueOezMo9J1I/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1HYxCX2aVHJSzmC_a_bRE1MfC9qt1mJb0/view?usp=sharing',
   },
   {
     name: 'Quality\nAssurance',
     image: '/props/quality2.png',
-    link: 'https://docs.google.com/document/d/1WzNQFcahuERBotoE4Kk42_-NusRPKg2U/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
+    link: 'https://drive.google.com/file/d/11fxq5zytKiUrhu46I-Lf7KNjMvO94sgo/view?usp=sharing',
   },
   {
     name: 'Resource\nManagement',
     image: '/props/resource2.png',
-    link: 'https://docs.google.com/document/d/1qjaO4I1s3JEM4U_nQpPyZH2YUoj4YkVa/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
+    link: 'https://drive.google.com/file/d/1BVU-q6qOB9uEcr0PoocDJLgVrMX20tze/view?usp=sharing',
   },
   {
     name: 'Teaching and\nLearning',
     image: '/props/teaching2.png',
-    link: 'https://docs.google.com/document/d/1W5RmvCXvSYp_CxoEtIAm8P6PqlGblczL/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
+    link: 'https://drive.google.com/file/d/1I8wHzp3LVPuXRIRlAjOcWXaP0hfqmLMy/view?usp=sharing',
   },
   {
     name: 'Student\nServices',
     image: '/props/student2.png',
-    link: 'https://docs.google.com/document/d/1GiNf-ZXDkTRKVjDrbZM_DAJZdNcGgBii/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
+    link: 'https://drive.google.com/file/d/1UL26l9ot0zmJlKAqbSDuszhgCBvlTBmJ/view?usp=sharing',
   },
   {
     name: 'External\nRelations',
     image: '/props/external3.png',
-    link: 'https://docs.google.com/document/d/1y0F6NfwYUXAZatKD0fGqEVOGah6B3URh/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
+    link: 'https://drive.google.com/file/d/1RcShMgL3rrvYwfOtSbmyyKSuqIIlrKHx/view?usp=sharing',
   },
   {
     name: 'Research',
     image: '/props/research2.png',
-    link: 'https://docs.google.com/document/d/1GiOFZVtR0PoqTgppfvDkR3eCGEPq0dRz/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
+    link: 'https://drive.google.com/file/d/1Z7PaKB8T61WIwWlbDcN0WEoMPjKGrsuy/view?usp=sharing',
   },
   {
     name: 'Results',
     image: '/props/result2.png',
-    link: 'https://docs.google.com/document/d/1T0BWGZnKuYEQMjSfQM-60fg2bQyrAEf9/edit?usp=drive_link&ouid=104708168691383246323&rtpof=true&sd=true',
+    link: 'https://drive.google.com/file/d/14jdLOiY0032twObnUZPke1L5fwVgpWGg/view?usp=sharing',
   },
 ];
 

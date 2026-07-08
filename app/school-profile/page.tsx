@@ -95,7 +95,7 @@ const timelineEvents = [
   {
     year: '2026',
     title: '84th Founding Anniversary',
-    description: 'Celebrated 84th Founding Anniversary with a Mass of Thanksgiving, motorcade, medical mission, and programs from SCC personnel, students, and alumni celebrating unity and shared mission.',
+    description: 'Celebrated 84th Founding Anniversary with the theme "Journey to 100th Blessing: The 84th Year" through a Mass of Thanksgiving, motorcade, medical mission, and programs celebrating unity and shared mission.',
     icon: Award,
   },
 ];
@@ -477,6 +477,9 @@ export default function SchoolProfilePage() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 mb-2">84th Founding Anniversary</h3>
+                      <p className="text-amber-700 font-semibold italic mb-3">
+                        &quot;Journey to 100th Blessing: The 84th Year&quot;
+                      </p>
                       <p className="text-gray-600 leading-relaxed">
                         Sta. Catalina College, Inc. Biñan celebrated its <span className="font-bold text-amber-700">84th Founding Anniversary</span> through a day filled with meaningful and joyful activities. 
                         The celebration began with a Mass of Thanksgiving, followed by a motorcade and medical mission. In the afternoon, the program continued with presentations from SCC personnel, 
