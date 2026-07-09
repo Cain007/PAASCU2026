@@ -11,7 +11,7 @@ const followUpAreas = [
   {
     name: 'Summary of Ratings',
     image: '/summary-of-ratings/summary2.png',
-    link: 'https://drive.google.com/drive/folders/1CtgcQGriHbMHoOdmVCREh2q-qgRj_xob?usp=drive_link',
+    link: 'https://drive.google.com/file/d/1PUJ9Yp4paRGQPKRsWrJ7FnUxUWfY00x_/view?usp=sharing',
   },
  
 ];

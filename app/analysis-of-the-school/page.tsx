@@ -12,42 +12,42 @@ const analysisAreas = [
   {
     name: 'Leadership and\nGovernance',
     image: '/props/leadership2.png',
-    link: 'https://drive.google.com/file/d/1HYxCX2aVHJSzmC_a_bRE1MfC9qt1mJb0/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1iqgS1pE4gZkiHzmVBj4k0zJsIWZqJSzJ/view?usp=sharing',
   },
   {
     name: 'Quality\nAssurance',
     image: '/props/quality2.png',
-    link: 'https://drive.google.com/file/d/11fxq5zytKiUrhu46I-Lf7KNjMvO94sgo/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1iqgS1pE4gZkiHzmVBj4k0zJsIWZqJSzJ/view?usp=sharing',
   },
   {
     name: 'Resource\nManagement',
     image: '/props/resource2.png',
-    link: 'https://drive.google.com/file/d/1BVU-q6qOB9uEcr0PoocDJLgVrMX20tze/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1QOFfmZHwFJYAXLgJrDG-2-j_VC5MH0B0/view?usp=sharing',
   },
   {
     name: 'Teaching and\nLearning',
     image: '/props/teaching2.png',
-    link: 'https://drive.google.com/file/d/1I8wHzp3LVPuXRIRlAjOcWXaP0hfqmLMy/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1pIDcUcEFVNFGnTXMVbCrQ6CvunReViFN/view?usp=sharing',
   },
   {
     name: 'Student\nServices',
     image: '/props/student2.png',
-    link: 'https://drive.google.com/file/d/1UL26l9ot0zmJlKAqbSDuszhgCBvlTBmJ/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1uOSK5u0kXbfRM35DNr_HvzCZ2ijWFqYd/view?usp=sharing',
   },
   {
     name: 'External\nRelations',
     image: '/props/external3.png',
-    link: 'https://drive.google.com/file/d/1RcShMgL3rrvYwfOtSbmyyKSuqIIlrKHx/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/18OD42dnD_nMJpqwsxFiMEfGQS6lS-wvG/view?usp=sharing',
   },
   {
     name: 'Research',
     image: '/props/research2.png',
-    link: 'https://drive.google.com/file/d/1Z7PaKB8T61WIwWlbDcN0WEoMPjKGrsuy/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1nEGMTiV_AtqA9KVFMG6Ps5EUzEw7hXZQ/view?usp=sharing',
   },
   {
     name: 'Results',
     image: '/props/result2.png',
-    link: 'https://drive.google.com/file/d/14jdLOiY0032twObnUZPke1L5fwVgpWGg/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1Eaj50Lr4K8nTL9uMbi59NraOMN8V_Ogr/view?usp=sharing',
   },
 ];
 

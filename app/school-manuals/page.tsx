@@ -14,12 +14,13 @@ const manualItems = [
   {
     name: 'Administrative Manual',
     image: '/school-manual/admin2.png', // Update with specific image path if needed
-    link: '#', // Update with the actual drive link
+    link: 'https://drive.google.com/file/d/1cHRviG1wzFDKmBVfi-aeUNcoT5bsqfJ6/view?usp=sharing', // Update with the actual drive link
   },
+
   {
     name: 'Standard\n Operating Guide',
     image: '/school-manual/standard2.png',
-    link: 'https://drive.google.com/file/d/1ZcLSI-8ojWOgdpPWicRxytphwJQ-U3za/view?usp=sharing',
+    link: 'https://drive.google.com/drive/folders/149WTWifnZiTbtvRkPQBtjJXKi-nyD4ED?usp=sharing',
   },
   {
     name: 'Faculty Manual',
@@ -30,7 +31,7 @@ const manualItems = [
   {
     name: 'Student Handbook',
     image: '/school-manual/student2.png',
-    link: '#',
+    link: 'https://drive.google.com/file/d/1PBn-mk2WNFLFQyVAqBsfrUwyH-iGcPfK/view?usp=sharing',
   },
 ];
 
@@ -40,7 +41,7 @@ export default function SchoolManualsPage() {
       <Hero
         badge="Manuals"
         title="Part VII : School Manuals"
-        subtitle="Policy and operations references"
+        subtitle="Institutional Policies, Procedures, and Operational Guidelines"
         size="md"
         align="center"
       />
