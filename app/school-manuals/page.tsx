@@ -25,7 +25,7 @@ const manualItems = [
   {
     name: 'Faculty Manual',
     image: '/school-manual/faculty2.png',
-    link: '#',
+    link: 'https://drive.google.com/file/d/1WfS_sF-nUzQExmxhzqmOlZlwBK2isCmO/view?usp=sharing',
   },
   
   {

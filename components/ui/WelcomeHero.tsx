@@ -21,7 +21,7 @@ export default function WelcomeHero() {
           priority
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-red-950/55 via-red-950/35 to-neutral-950/45" />
+        <div className="absolute inset-0 bg-gradient-to-r from-red-950/90 via-red-950/68 to-neutral-950/45" />
         <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/78 via-transparent to-neutral-950/35" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_28%,rgba(251,191,36,0.24),transparent_28%)]" />
       </div>
