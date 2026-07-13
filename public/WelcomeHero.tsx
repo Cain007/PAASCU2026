@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, FileText } from 'lucide-react';
-import MouseScrollIndicator from './MouseScrollIndicator';
+import MouseScrollIndicator from '../components/ui/MouseScrollIndicator';
 
 export default function WelcomeHero() {
   return (
