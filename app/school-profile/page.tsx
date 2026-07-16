@@ -5,13 +5,31 @@ import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionHeader from '@/components/ui/SectionHeader';
 import MouseScrollIndicator from '@/components/ui/MouseScrollIndicator';
 import BackToTopButton from '@/components/ui/BackToTopButton';
-import { Calendar, Award, GraduationCap, Building, BookOpen, Users, FileText, Church, Cross } from 'lucide-react';
+import { Calendar, Award, GraduationCap, Building, BookOpen, Users, FileText, Church } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'School Profile | SCC Biñan PAASCU 2026',
   description: 'Discover the rich history of Sta. Catalina College, Inc. - the first Catholic school in Biñan, Laguna, established in 1942.',
 };
+
+function NunIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M12 2c-2.8 0-5 2.1-5 4.9 0 1.5.6 2.8 1.6 3.8L6.2 13v7h11.6v-7l-2.4-2.3c1-1 1.6-2.3 1.6-3.8C17 4.1 14.8 2 12 2Z" />
+      <ellipse cx="12" cy="8.2" rx="2.3" ry="2.7" />
+      <path d="M12 11.5v8.5" />
+    </svg>
+  );
+}
 
 const timelineEvents = [
   {
@@ -183,7 +201,7 @@ export default function SchoolProfilePage() {
                   {/* Catholic Dominican */}
                   <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-300">
                     <div className="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center mb-4">
-                      <Cross className="w-6 h-6 text-red-400" />
+                      <NunIcon className="w-6 h-6 text-red-400" />
                     </div>
                     <div className="text-2xl font-bold text-white mb-1">Dominican Sisters</div>
                     <div className="text-white/70 text-sm">Of St. Catherine of Siena</div>
@@ -260,7 +278,7 @@ export default function SchoolProfilePage() {
                 <SectionHeader
                   badge="Our Journey"
                   title="Historical Timeline"
-                  subtitle="Key milestones in our journey of educational excellence"
+                  subtitle="Key milestones in our journey of Quality Education"
                 />
               </AnimatedSection>
 
