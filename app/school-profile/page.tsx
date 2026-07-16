@@ -177,7 +177,7 @@ export default function SchoolProfilePage() {
                       <Calendar className="w-6 h-6 text-amber-400" />
                     </div>
                     <div className="text-4xl font-bold text-white mb-1">84</div>
-                    <div className="text-white/70 text-sm">Years of Excellence</div>
+                    <div className="text-white/70 text-sm">Years of Quality Education</div>
                   </div>
                   
                   {/* Catholic Dominican */}

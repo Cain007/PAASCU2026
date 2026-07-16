@@ -29,7 +29,7 @@ export default function Home() {
           <AnimatedSection direction="up">
             <SectionHeader
               badge="About This Portal"
-              title="Dedicated to Excellence in Education"
+              title="Dedicated to Quality Education"
               subtitle="This portal serves as the comprehensive documentation hub for our PAASCU accreditation journey."
             />
             <p className="text-gray-600 text-sm leading-relaxed -mt-4 mb-6">
@@ -154,7 +154,7 @@ export default function Home() {
           <SectionHeader
             badge="Our Location"
             title="Visit Sta. Catalina College"
-            subtitle="Located in the heart of Biñan, Laguna, our campus provides a nurturing environment for academic excellence"
+            subtitle="Located in the heart of Biñan, Laguna, our campus provides a nurturing environment for quality education"
           />
         </AnimatedSection>
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
