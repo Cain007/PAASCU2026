@@ -12,37 +12,37 @@ const followUpAreas = [
   {
     name: 'Administration',
     image: '/follow-up/administration2.png',
-    link: 'https://drive.google.com/drive/folders/1uAcKo2NBTF1jIq-eKvlDyo4B8SWo-6N4?usp=sharing',
+    link: 'https://drive.google.com/file/d/1YkdR3ZtOzUPqasiY3zltfoeu2wB5XbTt/view?usp=sharing',
   },
   {
     name: 'Faculty',
     image: '/follow-up/faculty2.png',
-    link: 'https://drive.google.com/drive/folders/1YuvvzpKUcMIQkhHUz0pSSR8KjiaeqvdM?usp=drive_link',
+    link: 'https://drive.google.com/file/d/1uXwQkzTRUi-Y_Q_4qceyfbWu7CIKuMqp/view?usp=sharing',
   },
   {
     name: 'Curriculum and\nInstruction',
     image: '/follow-up/curriculum2.png',
-    link: 'https://drive.google.com/drive/folders/1IZNEJP3d19lSFlXhTnEcMtwQn0Ts5Np4?usp=drive_link',
+    link: 'https://drive.google.com/file/d/1qnl_OIir4THap_iCABXixAyIE9BzhRmn/view?usp=sharing',
   },
   {
     name: 'Library and\nAudio-Visual Center',
     image: '/follow-up/library2.png',
-    link: 'https://drive.google.com/drive/folders/1ciaJtJTPdUMcqGlm5nbvqYLGM5bsAIyB?usp=drive_link',
+    link: 'https://drive.google.com/file/d/1pY5511NZLOxya8BKmTrB-V2nHbkCF_e5/view?usp=sharing',
   },
   {
     name: 'Laboratories /\nFacilities',
     image: '/follow-up/laboratory2.png',
-    link: 'https://drive.google.com/drive/folders/1ZoHZn5Ng2umjh7AJ9JI7wYzfJSm0iorn?usp=drive_link',
+    link: 'https://drive.google.com/file/d/1hgOTXcmdpaNYliaigM_UqBikwmVjnE5d/view?usp=sharing',
   },
   {
     name: 'Student\nServices',
     image: '/follow-up/student3.png',
-    link: 'https://drive.google.com/drive/folders/1a_Zl4poOjD0iwwkHgtEdyEBRdDYEjKcX?usp=drive_link',
+    link: 'https://drive.google.com/file/d/16_j-mzf0sL3ImI4GOeOh7hmroNPwFZzo/view?usp=sharing',
   },
   {
     name: 'School and\nCommunity',
     image: '/follow-up/school3.png',
-    link: 'https://drive.google.com/drive/folders/16qOUMYHn6V5VcnyWG4PCXGT4WIB1JffX?usp=drive_link',
+    link: 'https://drive.google.com/file/d/1X7cJnELa_BDGZzYG1Y2P717yGjuRmJYm/view?usp=sharing',
   },
 ];
 

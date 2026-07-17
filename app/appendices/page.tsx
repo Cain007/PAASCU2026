@@ -13,42 +13,42 @@ const analysisAreas = [
   {
     name: 'Leadership and\nGovernance',
     image: '/props/leadership2.png',
-    link: 'https://drive.google.com/drive/folders/1vsiBDowINMQHUvMvlmk91zv_Pkku6xMo?usp=sharing',
+    link: 'https://drive.google.com/file/d/1d_O7sJySMIpA8sVH9oGD_FLgJ1xrmcaG/view?usp=sharing',
   },
   {
     name: 'Quality\nAssurance',
     image: '/props/quality2.png',
-    link: 'https://drive.google.com/drive/folders/1qs69TOOEN1TlMn-yrhP0rU9mYSAOoJKu?usp=sharing',
+    link: 'https://drive.google.com/file/d/1qwFg0kqwvVJszsODkecKN8iJaoW94MtK/view?usp=sharing',
   },
   {
     name: 'Resource\nManagement',
     image: '/props/resource2.png',
-    link: 'https://drive.google.com/drive/folders/1RxZeW4fm9mLBHF40n3PsbGaosc0ZXOmw?usp=sharing',
+    link: 'https://drive.google.com/file/d/15UY1bEjQ-gL7CoWaIBIdpuZGC8UyvnAr/view?usp=sharing',
   },
   {
     name: 'Teaching and\nLearning',
     image: '/props/teaching2.png',
-    link: 'https://drive.google.com/drive/folders/1akriVUcZmGbJJHIsvtw-crKudBX9znWf?usp=sharing',
+    link: 'https://drive.google.com/file/d/1WKH-N2kPPH7wAxAyDFQU7_QUu-Jvry1T/view?usp=sharing',
   },
   {
     name: 'Student\nServices',
     image: '/props/student2.png',
-    link: 'https://drive.google.com/drive/folders/1NbDIB_Urt5mDIDAmebGP2iy45yp6jMaW?usp=sharing',
+    link: 'https://drive.google.com/file/d/18dC_SVypwidzUUy_tg48LXx_5HPCtVI9/view?usp=sharing',
   },
   {
     name: 'External\nRelations',
     image: '/props/external3.png',
-    link: 'https://drive.google.com/drive/folders/1iOBeBK0PlCB-9NfQUuSD8etyq0ZG75L7?usp=sharing',
+    link: 'https://drive.google.com/file/d/1sEzZQQ6CSIFw6Ft6ve5uVc_Plxmx5iYL/view?usp=sharing',
   },
   {
     name: 'Research',
     image: '/props/research2.png',
-    link: 'https://drive.google.com/drive/folders/1Ymon49pHyNYHrruThjtqzv9m2jttFmHP?usp=sharing',
+    link: 'https://drive.google.com/file/d/14qDECTgmH9brEnj_UDfz066G4uxTEPHE/view?usp=sharing',
   },
   {
     name: 'Results',
     image: '/props/result2.png',
-    link: 'https://drive.google.com/drive/folders/1wfQDlugFVV6MAZznQF9PpaNWqV76kgZl?usp=sharing',
+    link: 'https://drive.google.com/file/d/1tDtfalz8bheMHy0eCJY3os88ROWFWKCD/view?usp=sharing',
   },
 ];
 
