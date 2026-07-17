@@ -11,14 +11,14 @@
  *  - Floating cards use light glassmorphism (white + blur + thin border).
  *  - Ambient warm gradients remain but at very low opacity for depth.
  *  - Warm gold grid adds editorial texture that ties into the palette.
- *  - Modern typography contrast: Full Old English font with selective gradient accents.
+ *  - Typography pairing: Cinzel (elegant, authoritative headings) + Inter (clean, modern UI/body text).
  */
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { UnifrakturMaguntia } from 'next/font/google';
+import { Cinzel, Inter } from 'next/font/google';
 import {
   ArrowRight,
   FileText,
@@ -42,10 +42,16 @@ import MouseScrollIndicator from './MouseScrollIndicator';
 /*  Font Configuration                                                        */
 /* -------------------------------------------------------------------------- */
 
-const oldEnglish = UnifrakturMaguntia({
-  weight: '400',
+const cinzel = Cinzel({
+  weight: ['400', '600', '700', '800', '900'],
   subsets: ['latin'],
   display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
 });
 
 /* -------------------------------------------------------------------------- */
@@ -281,9 +287,10 @@ export default function WelcomeHero() {
   }, []);
 
   return (
+    // Applied inter.className here so all UI/body text uses the modern sans-serif
     <section
       ref={containerRef}
-      className="relative min-h-[100svh] overflow-hidden text-slate-900"
+      className={`relative min-h-[100svh] overflow-hidden text-slate-900 ${inter.className}`}
       role="banner"
       aria-label="Sta. Catalina College PAASCU 2026 home hero"
     >
@@ -320,29 +327,38 @@ export default function WelcomeHero() {
             </div>
           </motion.div>
 
-          {/* Headline — Full Old English Contrast */}
+          {/* Headline — Cinzel Font with True Bold Weights */}
           <motion.h1
             variants={fadeUp}
             custom={1}
             initial="hidden"
             animate="visible"
-            className="leading-[1.1] text-slate-900"
+            className={`leading-[1.1] text-slate-900 ${cinzel.className}`}
           >
-            {/* Ornate Old English for the main name */}
             <span 
-              className={`block text-5xl sm:text-7xl md:text-8xl lg:text-8xl ${oldEnglish.className}`}
-              style={{ fontFamily: '"Engravers Old English", "UnifrakturMaguntia", cursive' }}
+              className="block text-5xl sm:text-7xl md:text-8xl lg:text-7xl"
+              style={{ 
+                fontWeight: 700, 
+                letterSpacing: '-0.02em', 
+                WebkitFontSmoothing: 'antialiased' 
+              }}
             >
               Sta. Catalina
             </span>
             
-            {/* Old English for College Inc. */}
             <span 
-              className={`block text-xl sm:text-2xl md:text-3xl lg:text-8xl mt-2 sm:mt-3 text-black ${oldEnglish.className}`}
-              style={{ fontFamily: '"Engravers Old English", "UnifrakturMaguntia", cursive' }}
+              className="block text-xl sm:text-2xl md:text-3xl lg:text-7xl mt-2 sm:mt-3 text-black"
+              style={{ 
+                fontWeight: 700, 
+                letterSpacing: '-0.02em', 
+                WebkitFontSmoothing: 'antialiased' 
+              }}
             >
               College{' '}
-              <span className="bg-gradient-to-br from-red-700 via-red-600 to-amber-600 bg-clip-text text-transparent">
+              <span 
+                className="bg-gradient-to-br from-red-700 via-red-600 to-amber-600 bg-clip-text text-transparent"
+                style={{ fontWeight: 800 }} 
+              >
                 Inc.
               </span>
             </span>
@@ -508,7 +524,7 @@ export default function WelcomeHero() {
             </motion.div>
 
             {/* -------------------------------------------------------------- */}
-            {/*  Floating glass cards around the image (UPDATED WITH PARTS)    */}
+            {/*  Floating glass cards around the image                         */}
             {/* -------------------------------------------------------------- */}
 
            <FloatingCard
@@ -581,7 +597,6 @@ export default function WelcomeHero() {
               parallaxX={mouse.x * 16}
               parallaxY={mouse.y * 12}
               delay={0.75}
-            
             />
           </div>
         </div>
