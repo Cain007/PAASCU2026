@@ -10,12 +10,15 @@
  *    and subtle warm gradient border.
  *  - Floating cards use light glassmorphism (white + blur + thin border).
  *  - Ambient warm gradients remain but at very low opacity for depth.
+ *  - Warm gold grid adds editorial texture that ties into the palette.
+ *  - Modern typography contrast: Full Old English font with selective gradient accents.
  */
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { UnifrakturMaguntia } from 'next/font/google';
 import {
   ArrowRight,
   FileText,
@@ -27,10 +30,23 @@ import {
   Calendar,
   Sparkles,
   CheckCircle2,
-  Building2,
-  Layers,
+  BarChart3,
+  Target,
+  FolderOpen,
+  FileCheck,
+  ClipboardList,
 } from 'lucide-react';
 import MouseScrollIndicator from './MouseScrollIndicator';
+
+/* -------------------------------------------------------------------------- */
+/*  Font Configuration                                                        */
+/* -------------------------------------------------------------------------- */
+
+const oldEnglish = UnifrakturMaguntia({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 /* -------------------------------------------------------------------------- */
 /*  Motion variants                                                           */
@@ -61,7 +77,7 @@ const scaleReveal = {
 };
 
 /* -------------------------------------------------------------------------- */
-/*  Background — white base + faint grid + warm ambient lighting              */
+/*  Background — white base + gold grid + warm ambient lighting               */
 /* -------------------------------------------------------------------------- */
 
 function HeroBackground() {
@@ -70,13 +86,31 @@ function HeroBackground() {
       {/* Warm off-white base — slightly softer than pure #FFF */}
       <div className="absolute inset-0 bg-[#FAFAF8]" />
 
-      {/* Subtle grid — light gray on white, masked to center */}
+      {/* Fine gold grid — warm amber texture */}
       <div
-        className="absolute inset-0 opacity-[0.5]"
+        className="absolute inset-0 opacity-[0.9]"
         style={{
-          backgroundImage:
-            'linear-gradient(to right, rgba(15,23,42,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,23,42,0.05) 1px, transparent 1px)',
-          backgroundSize: '64px 64px',
+          backgroundImage: `
+            linear-gradient(to right, rgba(180, 130, 30, 0.10) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(180, 130, 30, 0.10) 1px, transparent 1px)
+          `,
+          backgroundSize: '32px 32px',
+          maskImage:
+            'radial-gradient(ellipse 70% 50% at 50% 40%, black 20%, transparent 100%)',
+          WebkitMaskImage:
+            'radial-gradient(ellipse 70% 50% at 50% 40%, black 20%, transparent 100%)',
+        }}
+      />
+
+      {/* Coarse gold grid — editorial structure */}
+      <div
+        className="absolute inset-0 opacity-[0.95]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(180, 130, 30, 0.18) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(180, 130, 30, 0.18) 1px, transparent 1px)
+          `,
+          backgroundSize: '128px 128px',
           maskImage:
             'radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%)',
           WebkitMaskImage:
@@ -114,13 +148,14 @@ function HeroBackground() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Floating glass card — light mode                                          */
+/*  Floating glass card — light mode (NOW CLICKABLE)                          */
 /* -------------------------------------------------------------------------- */
 
 interface FloatingCardProps {
   icon: React.ReactNode;
   label: string;
   value: string;
+  href?: string;
   accent?: 'red' | 'gold' | 'neutral';
   className?: string;
   parallaxX?: number;
@@ -132,6 +167,7 @@ function FloatingCard({
   icon,
   label,
   value,
+  href,
   accent = 'neutral',
   className = '',
   parallaxX = 0,
@@ -154,6 +190,53 @@ function FloatingCard({
     neutral: 'text-slate-700 bg-slate-50 border-slate-200/60',
   }[accent];
 
+  const cardContent = (
+    <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border ${accentStyles}`}>
+      {icon}
+    </div>
+  );
+
+  const textContent = (
+    <div className="flex flex-col">
+      <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+        {label}
+      </span>
+      <span className="text-sm font-semibold text-slate-900">{value}</span>
+    </div>
+  );
+
+  // If href is provided, wrap in Link; otherwise just render as div
+  if (href) {
+    return (
+      <motion.div
+        style={{ x: springX, y: springY }}
+        initial={{ opacity: 0, y: 16, scale: 0.92 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{
+          delay: 0.7 + delay,
+          duration: 0.75,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        whileHover={{ y: -4, transition: { duration: 0.25 } }}
+        className={className}
+      >
+        <Link
+          href={href}
+          className="group flex items-center gap-3 rounded-2xl border
+            border-slate-200/70 bg-white/80 px-4 py-3 shadow-[0_8px_32px_-8px_rgba(15,23,42,0.12)]
+            backdrop-blur-xl transition-all duration-300
+            hover:border-slate-300 hover:shadow-[0_16px_48px_-12px_rgba(15,23,42,0.18)]
+            hover:bg-white/95 cursor-pointer"
+        >
+          {cardContent}
+          {textContent}
+          <ArrowRight className="ml-auto h-3.5 w-3.5 text-slate-400 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0.5" />
+        </Link>
+      </motion.div>
+    );
+  }
+
+  // Non-clickable version (fallback)
   return (
     <motion.div
       style={{ x: springX, y: springY }}
@@ -171,65 +254,8 @@ function FloatingCard({
         hover:border-slate-300 hover:shadow-[0_16px_48px_-12px_rgba(15,23,42,0.18)]
         ${className}`}
     >
-      <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border ${accentStyles}`}>
-        {icon}
-      </div>
-      <div className="flex flex-col">
-        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500">
-          {label}
-        </span>
-        <span className="text-sm font-semibold text-slate-900">{value}</span>
-      </div>
-    </motion.div>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*  Stat card — bottom bento row                                              */
-/* -------------------------------------------------------------------------- */
-
-interface StatCardProps {
-  icon: React.ReactNode;
-  value: string;
-  label: string;
-  delay: number;
-}
-
-function StatCard({ icon, value, label, delay }: StatCardProps) {
-  return (
-    <motion.div
-      variants={fadeUp}
-      custom={delay}
-      initial="hidden"
-      animate="visible"
-      whileHover={{ y: -4, transition: { duration: 0.25 } }}
-      className="group relative overflow-hidden rounded-2xl border border-slate-200/70
-        bg-white p-5 shadow-[0_1px_3px_rgba(15,23,42,0.04)] transition-all duration-300
-        hover:border-slate-300 hover:shadow-[0_12px_32px_-8px_rgba(15,23,42,0.12)]"
-    >
-      {/* Hover glow */}
-      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-        <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-amber-200/40 blur-3xl" />
-      </div>
-
-      <div className="relative flex items-start justify-between">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200/70 bg-gradient-to-br from-red-50 to-amber-50 text-red-700">
-          {icon}
-        </div>
-        <div className="flex h-2 w-2 items-center justify-center">
-          <span className="absolute h-2 w-2 animate-ping rounded-full bg-amber-400/60" />
-          <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
-        </div>
-      </div>
-
-      <div className="relative mt-5">
-        <div className="text-3xl font-bold tracking-tight text-slate-900 tabular-nums sm:text-4xl">
-          {value}
-        </div>
-        <div className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
-          {label}
-        </div>
-      </div>
+      {cardContent}
+      {textContent}
     </motion.div>
   );
 }
@@ -294,17 +320,27 @@ export default function WelcomeHero() {
             </div>
           </motion.div>
 
-          {/* Headline */}
+          {/* Headline — Full Old English Contrast */}
           <motion.h1
             variants={fadeUp}
             custom={1}
             initial="hidden"
             animate="visible"
-            className="text-[44px] font-bold leading-[0.95] tracking-[-0.03em] text-slate-900
-              sm:text-6xl md:text-7xl lg:text-[80px]"
+            className="leading-[1.1] text-slate-900"
           >
-            <span className="block">Sta. Catalina</span>
-            <span className="block">
+            {/* Ornate Old English for the main name */}
+            <span 
+              className={`block text-5xl sm:text-7xl md:text-8xl lg:text-8xl ${oldEnglish.className}`}
+              style={{ fontFamily: '"Engravers Old English", "UnifrakturMaguntia", cursive' }}
+            >
+              Sta. Catalina
+            </span>
+            
+            {/* Old English for College Inc. */}
+            <span 
+              className={`block text-xl sm:text-2xl md:text-3xl lg:text-8xl mt-2 sm:mt-3 text-black ${oldEnglish.className}`}
+              style={{ fontFamily: '"Engravers Old English", "UnifrakturMaguntia", cursive' }}
+            >
               College{' '}
               <span className="bg-gradient-to-br from-red-700 via-red-600 to-amber-600 bg-clip-text text-transparent">
                 Inc.
@@ -472,73 +508,80 @@ export default function WelcomeHero() {
             </motion.div>
 
             {/* -------------------------------------------------------------- */}
-            {/*  Floating glass cards around the image                         */}
+            {/*  Floating glass cards around the image (UPDATED WITH PARTS)    */}
             {/* -------------------------------------------------------------- */}
 
-            <FloatingCard
-              icon={<Calendar className="h-4 w-4" />}
-              label="Established"
-              value="Since 1949"
+           <FloatingCard
+              icon={<BookOpen className="h-4 w-4" />}
+              label="PART I"
+              value="School Profile"
+              href="/school-profile"
               accent="gold"
-              className="left-[-4%] top-[8%] hidden sm:flex"
+              className="left-[-4%] top-[8%] hidden sm:flex absolute z-20"
               parallaxX={mouse.x * -18}
               parallaxY={mouse.y * -12}
               delay={0}
             />
 
             <FloatingCard
-              icon={<Award className="h-4 w-4" />}
-              label="Accreditation"
-              value="PAASCU Resurvey 2026"
+              icon={<Target className="h-4 w-4" />}
+              label="PART II"
+              value="Follow-up Actions"
+              href="/follow-up-action"
               accent="red"
-              className="right-[-2%] top-[4%] hidden md:flex"
+              className="right-[-2%] top-[4%] hidden md:flex absolute z-20"
               parallaxX={mouse.x * 14}
               parallaxY={mouse.y * -10}
               delay={0.15}
             />
 
             <FloatingCard
-              icon={<GraduationCap className="h-4 w-4" />}
-              label="Programs"
-              value="5 Levels"
+              icon={<BarChart3 className="h-4 w-4" />}
+              label="PART III"
+              value="Analysis of the School"
+              href="/analysis-of-the-school"
               accent="neutral"
-              className="left-[-6%] top-[45%] hidden lg:flex"
+              className="left-[-6%] top-[45%] hidden lg:flex absolute z-20"
               parallaxX={mouse.x * -22}
               parallaxY={mouse.y * -6}
               delay={0.3}
             />
 
             <FloatingCard
-              icon={<Shield className="h-4 w-4" />}
-              label="Quality"
-              value="PAASCU Accredited"
+              icon={<CheckCircle2 className="h-4 w-4" />}
+              label="PART IV"
+              value="Conclusion"
+              href="/conclusion"
               accent="gold"
-              className="right-[-4%] top-[50%] hidden lg:flex"
+              className="right-[-4%] top-[50%] hidden lg:flex absolute z-20"
               parallaxX={mouse.x * 18}
               parallaxY={mouse.y * -8}
               delay={0.45}
             />
 
             <FloatingCard
-              icon={<BookOpen className="h-4 w-4" />}
-              label="Documents"
-              value="7 PAASCU Areas"
+              icon={<FolderOpen className="h-4 w-4" />}
+              label="PART V"
+              value="Summary of Appendices"
+              href="/appendices"
               accent="neutral"
-              className="left-[6%] bottom-[6%] hidden sm:flex"
+              className="left-[6%] bottom-[6%] hidden sm:flex absolute z-20"
               parallaxX={mouse.x * -14}
               parallaxY={mouse.y * 10}
               delay={0.6}
             />
 
             <FloatingCard
-              icon={<Users className="h-4 w-4" />}
-              label="Community"
-              value="248 Learners"
+              icon={<Award className="h-4 w-4" />}
+              label="PART VI"
+              value="Summary of Ratings"
+              href="/summary-of-ratings"
               accent="red"
-              className="right-[4%] bottom-[2%] hidden md:flex"
+              className="right-[4%] bottom-[2%] hidden md:flex absolute z-20"
               parallaxX={mouse.x * 16}
               parallaxY={mouse.y * 12}
               delay={0.75}
+            
             />
           </div>
         </div>

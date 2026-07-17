@@ -5,8 +5,8 @@ import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionHeader from '@/components/ui/SectionHeader';
 import MouseScrollIndicator from '@/components/ui/MouseScrollIndicator';
 import BackToTopButton from '@/components/ui/BackToTopButton';
-import { Calendar, Award, GraduationCap, Building, BookOpen, Users, FileText, Church } from 'lucide-react';
-import Link from 'next/link';
+import { ProfileDocumentsTrigger } from '@/components/ui/ProfileDocumentsTrigger';
+import { Calendar, Award, GraduationCap, Building, BookOpen, Users, Church } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'School Profile | SCC Biñan PAASCU 2026',
@@ -175,16 +175,8 @@ export default function SchoolProfilePage() {
                     </p>
                   </div>
                   
-                  {/* CTA Button */}
-                  <Link
-                    href="https://drive.google.com/drive/folders/1hqgk6Mtjjbzn650Ev41ZRMQdlUV-iaCp?usp=drive_link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-8 py-4 bg-red-600 text-white rounded-xl font-semibold shadow-lg hover:bg-red-700 transition-all duration-300 hover:scale-105 hover:shadow-red-500/25"
-                  >
-                    <FileText className="w-5 h-5" />
-                    View Complete School Profile Document
-                  </Link>
+                  {/* NEW: Modal Trigger Button */}
+                  <ProfileDocumentsTrigger />
                 </div>
                 
                 {/* Right Column - Stats Cards */}
@@ -237,7 +229,10 @@ export default function SchoolProfilePage() {
         {/* Content that scrolls over the hero */}
         <div className="relative z-10 bg-white">
           {/* Timeline Section */}
-          <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-gray-50 to-white overflow-hidden">
+          <section 
+            id="historical-timeline" // UPDATED: Added ID for anchor linking
+            className="relative py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-gray-50 to-white overflow-hidden"
+          >
             {/* Abstract decorations - Left side */}
             <div className="absolute left-0 top-20 hidden lg:block">
               <div className="flex flex-col gap-4">
