@@ -9,13 +9,12 @@ import ContentSection from '@/components/ui/ContentSection';
 import SectionHeader from '@/components/ui/SectionHeader';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import SocialConnect from '@/components/ui/SocialConnect';
+import VideoShowcase from '@/components/ui/VideoShowcase'; // <-- New Component
 
 export const metadata: Metadata = {
   title: 'Home | SCC Biñan PAASCU 2026',
   description: 'Welcome to the SCSJ-IBED PAASCU Accreditation 2026 portal. Explore our institutional profile, accreditation documents, and comprehensive analysis.',
 };
-
-
 
 export default function Home() {
   return (
@@ -54,18 +53,16 @@ export default function Home() {
           <AnimatedSection direction="left">
             <div className="md:w-4/5 lg:w-3/4">
               <div className="relative p-6 lg:p-8 bg-white rounded-2xl shadow-lg border-l-4 border-red-600">
-                {/* Quote mark decoration */}
                 <div className="absolute -top-3 -left-3 w-10 h-10 bg-red-600 rounded-full flex items-center justify-center shadow-md">
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                   </svg>
                 </div>
-                
                 <div className="pt-2">
                   <h3 className="text-lg font-bold text-red-600 uppercase tracking-wide mb-3">Our Vision</h3>
                   <p className="text-gray-700 text-lg leading-relaxed italic">
-                    {"\"We envision that Sta. Catalina College, Inc. Biñan, Laguna to be "}<span className="font-semibold text-gray-900 not-italic">Innovative and responsive Agent of Evangelization</span>{" in the Spirit of "}<span className="font-bold text-red-600 not-italic">Communion, Participation, and Mission</span>{".\""}
+                    {"\"We envision that Sta. Catalina College, Inc. Biñan, Laguna to be "}<span className="font-semibold text-gray-900 not-italic">Innovative and responsive Agent of Evangelization</span>{" in the Spirit of "}<span className="font-bold text-red-600 not-italic">Communion, Participation, and Mission</span>{"."}
                   </p>
                 </div>
               </div>
@@ -76,17 +73,15 @@ export default function Home() {
           <AnimatedSection direction="right" delay={200}>
             <div className="md:w-4/5 lg:w-3/4 ml-auto">
               <div className="relative p-6 lg:p-8 bg-white rounded-2xl shadow-lg border-r-4 border-amber-500">
-                {/* Quote mark decoration */}
                 <div className="absolute -top-3 -right-3 w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center shadow-md">
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                   </svg>
                 </div>
-                
                 <div className="pt-2">
                   <h3 className="text-lg font-bold text-amber-600 uppercase tracking-wide mb-3 text-right">Our Mission</h3>
                   <p className="text-gray-700 text-lg leading-relaxed italic text-right">
-                    {"\"As a member of "}<span className="font-semibold text-gray-900 not-italic">OP-Siena School System Development</span>{", the community of Sta. Catalina College, the first Catholic School in Biñan, Laguna, commits itself to the "}<span className="font-semibold text-gray-900 not-italic">Evangelizing Mission of the Church</span>{" for Integral Faith Formation that promotes academic proficiency and Gospel values lived by the "}<span className="font-bold text-red-600 not-italic">Dominican Saints and Venerable Francisca del Espiritu Santo de Fuentes</span>{".\""}
+                    {"\"As a member of "}<span className="font-semibold text-gray-900 not-italic">OP-Siena School System Development</span>{", the community of Sta. Catalina College, the first Catholic School in Biñan, Laguna, commits itself to the "}<span className="font-semibold text-gray-900 not-italic">Evangelizing Mission of the Church</span>{" for Integral Faith Formation that promotes academic proficiency and Gospel values lived by the "}<span className="font-bold text-red-600 not-italic">Dominican Saints and Venerable Francisca del Espiritu Santo de Fuentes</span>{"."}
                   </p>
                 </div>
               </div>
@@ -100,7 +95,7 @@ export default function Home() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <AnimatedSection direction="left">
             <div className="relative group">
-              <div className="absolute -inset-2 bg-linear-to-r from-red-500 via-rose-500 to-amber-500 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
+              <div className="absolute -inset-2 bg-gradient-to-r from-red-500 via-rose-500 to-amber-500 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
               <div className="relative overflow-hidden rounded-xl shadow-xl border border-gray-100">
                 <Image
                   src="/schoolFb1.png"
@@ -148,6 +143,9 @@ export default function Home() {
       {/* Social Media Marquee */}
       <SocialConnect />
 
+      {/* 🎬 NEW: Floating MacBook Video Showcase */}
+      <VideoShowcase />
+
       {/* Location Section with Google Map */}
       <ContentSection>
         <AnimatedSection direction="up">
@@ -177,7 +175,7 @@ export default function Home() {
           {/* Location Info */}
           <AnimatedSection direction="right" delay={200}>
             <div className="flex flex-col gap-4 h-full">
-              <div className="p-5 bg-linear-to-br from-red-50 to-rose-50 rounded-xl border border-red-100">
+              <div className="p-5 bg-gradient-to-br from-red-50 to-rose-50 rounded-xl border border-red-100">
                 <div className="flex items-center gap-4">
                   <div className="shrink-0 w-11 h-11 bg-red-600 rounded-lg flex items-center justify-center">
                     <MapPin className="w-5 h-5 text-white" />
