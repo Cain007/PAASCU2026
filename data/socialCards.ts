@@ -62,6 +62,14 @@ export const socialCardsLeft: SocialCard[] = [
     facebookUrl: "https://www.facebook.com/share/1cddmdLPVo/",
   },
 
+  {
+    id: "student-council",
+    title: "RANIAG / LUVOPSEA RESEARCH FESTIVAL 2026",
+    description: "CHAMPION in the Junior High School Poster Competition during the LuVOPSEA Research Festival 2026. We commend our Grade 9 presenters Ashley Jade M. Calatin and Sameena Mei M. Singh, who formally represented the research group during the competition, for their outstanding performance. We also recognize their research group members Martina Sabel Z. Reyes, Justine Kyle B. Gallo, Harffy Arellano, Nathaneal Pascua, and Raylee Galan for their valuable contributions and support in the completion of the study.",
+    image: "/card-carousel/left/raniag.jpg",
+    facebookUrl: "https://www.facebook.com/share/p/14kg2FFM3LP/",
+  },
+
 
   
 
