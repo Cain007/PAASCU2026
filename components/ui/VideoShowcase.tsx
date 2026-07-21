@@ -26,7 +26,7 @@ export default function VideoShowcase() {
                 />
               </div>
               <p className="text-gray-600 text-lg leading-relaxed mb-8 text-justify">
-                Experience the vibrant spirit, faith-driven initiatives, and dynamic community of Sta. Catalina College through our latest event highlights.
+                Experience the vibrant spirit, faith-driven initiatives, and dynamic community of Sta. Catalina College Inc. through our latest event highlights.
               </p>
               <p className="text-gray-500 text-base leading-relaxed text-justify">
                 From youth congresses to academic achievements, see how our students live out our mission of communion, participation, and mission in every aspect of campus life.

@@ -62,7 +62,7 @@ export default function Home() {
                 <div className="pt-2">
                   <h3 className="text-lg font-bold text-red-600 uppercase tracking-wide mb-3">Our Vision</h3>
                   <p className="text-gray-700 text-lg leading-relaxed italic">
-                    {"\"We envision that Sta. Catalina College, Inc. Biñan, Laguna to be "}<span className="font-semibold text-gray-900 not-italic">Innovative and responsive Agent of Evangelization</span>{" in the Spirit of "}<span className="font-bold text-red-600 not-italic">Communion, Participation, and Mission</span>{"."}
+                    {"\"We envision that Sta. Catalina College Inc. Biñan, Laguna to be "}<span className="font-semibold text-gray-900 not-italic">Innovative and responsive Agent of Evangelization</span>{" in the Spirit of "}<span className="font-bold text-red-600 not-italic">Communion, Participation, and Mission</span>{"."}
                   </p>
                 </div>
               </div>
@@ -81,7 +81,7 @@ export default function Home() {
                 <div className="pt-2">
                   <h3 className="text-lg font-bold text-amber-600 uppercase tracking-wide mb-3 text-right">Our Mission</h3>
                   <p className="text-gray-700 text-lg leading-relaxed italic text-right">
-                    {"\"As a member of "}<span className="font-semibold text-gray-900 not-italic">OP-Siena School System Development</span>{", the community of Sta. Catalina College, the first Catholic School in Biñan, Laguna, commits itself to the "}<span className="font-semibold text-gray-900 not-italic">Evangelizing Mission of the Church</span>{" for Integral Faith Formation that promotes academic proficiency and Gospel values lived by the "}<span className="font-bold text-red-600 not-italic">Dominican Saints and Venerable Francisca del Espiritu Santo de Fuentes</span>{"."}
+                    {"\"As a member of "}<span className="font-semibold text-gray-900 not-italic">OP-Siena School System Development</span>{", the community of Sta. Catalina College Inc., the first Catholic School in Biñan, Laguna, commits itself to the "}<span className="font-semibold text-gray-900 not-italic">Evangelizing Mission of the Church</span>{" for Integral Faith Formation that promotes academic proficiency and Gospel values lived by the "}<span className="font-bold text-red-600 not-italic">Dominican Saints and Venerable Francisca del Espiritu Santo de Fuentes</span>{"."}
                   </p>
                 </div>
               </div>
@@ -151,7 +151,7 @@ export default function Home() {
         <AnimatedSection direction="up">
           <SectionHeader
             badge="Our Location"
-            title="Visit Sta. Catalina College"
+            title="Visit Sta. Catalina College Inc."
             subtitle="Located in the heart of Biñan, Laguna, our campus provides a nurturing environment for quality education"
           />
         </AnimatedSection>
@@ -194,7 +194,7 @@ export default function Home() {
               <div className="p-5 bg-white rounded-xl border border-gray-200 shadow-sm flex-1">
                 <h4 className="text-base font-bold text-gray-900 mb-2">About Our Campus</h4>
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                  Sta. Catalina College is committed to providing quality Catholic education. 
+                  Sta. Catalina College Inc. is committed to providing quality Catholic education. 
                   Our campus offers modern facilities designed to support holistic student development.
                 </p>
 

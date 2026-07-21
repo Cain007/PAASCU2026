@@ -10,7 +10,7 @@ export const socialCardsLeft: SocialCard[] = [
   {
     id: "Parent Orientation",
     title: "PARENT ORIENTATION 2026",
-    description: "Sta. Catalina College, Inc. successfully held its Parent Orientation for School Year 2026–2027, strengthening the partnership between home and school.",
+    description: "Sta. Catalina College Inc. successfully held its Parent Orientation for School Year 2026–2027, strengthening the partnership between home and school.",
     image: "/card-carousel/left/parent.png",
     facebookUrl: "https://www.facebook.com/share/p/1CzSi37E9b/",
   },
@@ -25,7 +25,7 @@ export const socialCardsLeft: SocialCard[] = [
   {
     id: "student-council",
     title: "FIRE & EARTHQUAKE DRILL",
-    description: "Sta. Catalina College, Inc. successfully conducted its Fire and Earthquake Drill as part of its continuing commitment to campus safety and disaster preparedness. ",
+    description: "Sta. Catalina College Inc. successfully conducted its Fire and Earthquake Drill as part of its continuing commitment to campus safety and disaster preparedness. ",
     image: "/card-carousel/left/drill.png",
     facebookUrl: "https://www.facebook.com/share/p/193EtHG6Zr/",
   },

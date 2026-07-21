@@ -35,7 +35,7 @@ export default function PrincipalPortrait({
 
         <div className="border-t border-amber-200 bg-[#f7c76b] px-5 py-5 text-neutral-950">
           <p className="text-sm font-bold text-red-800">
-            Sta. Catalina College, Inc.
+            Sta. Catalina College Inc.
           </p>
           <p className="mt-2 text-sm leading-6 text-neutral-800">
             Welcoming the PAASCU resurvey visit with gratitude, confidence, and a

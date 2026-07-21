@@ -35,7 +35,7 @@ const timelineEvents = [
   {
     year: '1942',
     title: 'The Beginning',
-    description: 'Sta. Catalina College, Inc. was established on May 2, 1942, as a Catechetical School.',
+    description: 'Sta. Catalina College Inc. was established on May 2, 1942, as a Catechetical School.',
     icon: BookOpen,
   },
   {
@@ -65,7 +65,7 @@ const timelineEvents = [
   {
     year: '1996',
     title: 'Name Change & Technology',
-    description: 'School name changed to Sta. Catalina College. Computer education was offered from Grade 1 to Fourth Year.',
+    description: 'School name changed to Sta. Catalina College Inc. Computer education was offered from Grade 1 to Fourth Year.',
     icon: GraduationCap,
   },
   {
@@ -167,11 +167,9 @@ export default function SchoolProfilePage() {
                   {/* Description */}
                   <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
                     <p className="text-white/90 leading-relaxed text-lg">
-                      Sta. Catalina College, Inc. stands as a distinguished{' '}
+                      Sta. Catalina College, Inc. is a{' '}
                       <span className="font-semibold text-amber-300">Catholic Dominican institution</span>{' '}
-                      committed to the total formation of students. As the{' '}
-                      <span className="font-semibold text-red-400">first Catholic school in Biñan, Laguna</span>,
-                      we continue to provide Christian education to the youth of the City of Biñan and neighboring towns.
+                      inspired by the charism of St. Dominic and the Gospel of Christ. Since 1942, we have been forming lifelong learners who pursue truth, live their faith, and serve humanity with compassion and integrity.
                     </p>
                   </div>
                   
@@ -361,7 +359,7 @@ export default function SchoolProfilePage() {
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 mb-2">The Early Beginnings</h3>
                       <p className="text-gray-600 leading-relaxed">
-                        The early beginnings of Sta. Catalina College, Inc. dates back to <span className="font-semibold">May 2, 1942</span>, as a Catechetical School. 
+                        The early beginnings of Sta. Catalina College Inc. dates back to <span className="font-semibold">May 2, 1942</span>, as a Catechetical School. 
                         In 1943, Religion and Spanish courses were offered. Four years later, in 1946, the Dominican Sisters of St. Catherine of Siena offered an Academic Course. 
                         They secured government recognition for the Elementary and High School Education. Later, they obtained a permit to open the academic Normal Course for young teachers.
                       </p>
@@ -398,7 +396,7 @@ export default function SchoolProfilePage() {
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 mb-2">Service to the Community</h3>
                       <p className="text-gray-600 leading-relaxed">
-                        Sta. Catalina College continually provides the youth of the City of Biñan and other neighboring towns with Christian education. 
+                        Sta. Catalina College Inc. continually provides the youth of the City of Biñan and other neighboring towns with Christian education. 
                         It extends help to poor students through scholarship grants and to out-of-school youth and adults, skills training to enable them to cope 
                         with the economic demands of our times. Night high school classes for the first year opened in <span className="font-semibold">Academic Year 2006-2007</span> to 
                         help working students and less fortunate youth to finish high school.
@@ -472,7 +470,7 @@ export default function SchoolProfilePage() {
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 mb-2">80th Founding Anniversary (2022)</h3>
                       <p className="text-gray-600 leading-relaxed">
-                        With God&apos;s blessing, Sta. Catalina College, Inc. celebrated its <span className="font-bold text-red-600">80th Founding Anniversary</span> with the theme: 
+                        With God&apos;s blessing, Sta. Catalina College Inc. celebrated its <span className="font-bold text-red-600">80th Founding Anniversary</span> with the theme: 
                         <span className="italic"> &quot;Sabayang-Sulyap at pagTanaw sa Adhikaing Catherineans&quot;</span>. The grand opening was held on May 02, 2022, 
                         with a Eucharistic celebration together with the administration, personnel and staff, parents, students, benefactors, and alumni. 
                         The celebration included the monumental unveiling of the 80th logo marker and the singing of the anniversary hymn at St. Catherine&apos;s ground.
@@ -494,7 +492,7 @@ export default function SchoolProfilePage() {
                         &quot;Journey to 100th Blessing: The 84th Year&quot;
                       </p>
                       <p className="text-gray-600 leading-relaxed">
-                        Sta. Catalina College, Inc. Biñan celebrated its <span className="font-bold text-amber-700">84th Founding Anniversary</span> through a day filled with meaningful and joyful activities. 
+                        Sta. Catalina College Inc. Biñan celebrated its <span className="font-bold text-amber-700">84th Founding Anniversary</span> through a day filled with meaningful and joyful activities. 
                         The celebration began with a Mass of Thanksgiving, followed by a motorcade and medical mission. In the afternoon, the program continued with presentations from SCC personnel, 
                         students, and alumni, along with a special surprise number that brought excitement to the celebration. The event also featured a Bingo and Raffle for a Cause, 
                         promoting unity and support within the community. This celebration truly reflected the strong spirit, unity, and shared mission of every Catherinean as we continue 
@@ -514,7 +512,7 @@ export default function SchoolProfilePage() {
                   <div className="bg-linear-to-r from-red-600 to-rose-700 p-8 lg:p-12 rounded-2xl text-white">
                     <h2 className="text-2xl lg:text-3xl font-bold mb-4">Our Continuing Commitment</h2>
                     <p className="text-red-100 leading-relaxed">
-                      Sta. Catalina College, Inc. vows to continue its service of multiplying Christ-like individuals 
+                      Sta. Catalina College Inc. vows to continue its service of multiplying Christ-like individuals 
                       through its dedication and commitment to its <span className="font-semibold text-white">Mission and Vision</span>.
                     </p>
                   </div>
