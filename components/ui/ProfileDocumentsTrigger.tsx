@@ -90,7 +90,7 @@ export function ProfileDocumentsTrigger() {
                           {doc.title}
                         </h3>
                         <p className="text-xs text-slate-500 mt-1.5 flex items-center gap-1.5">
-                          <span>{doc.isFile ? 'PDF Document' : 'View Document'}</span>
+                          <span>{doc.isFile ? 'View Document' : 'View Document'}</span>
                           <Download className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300" />
                         </p>
                       </div>
