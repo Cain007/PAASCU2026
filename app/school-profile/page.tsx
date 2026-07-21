@@ -169,7 +169,7 @@ export default function SchoolProfilePage() {
                     <p className="text-white/90 leading-relaxed text-lg">
                       Sta. Catalina College, Inc. is a{' '}
                       <span className="font-semibold text-amber-300">Catholic Dominican institution</span>{' '}
-                      inspired by the charism of St. Dominic and the Gospel of Christ. Since 1942, we have been forming lifelong learners who pursue truth, live their faith, and serve humanity with compassion and integrity.
+                      inspired by the charism of St. Dominic and the Gospel. We have been forming lifelong learners who pursue truth, live their faith, and serve humanity with compassion and integrity.
                     </p>
                   </div>
                   
