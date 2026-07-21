@@ -17,7 +17,7 @@ const documents = [
   { title: 'Educational Program', icon: GraduationCap, href: 'https://drive.google.com/file/d/11EnGqqhzmRBk3FShHL_c5I_ckvL-YSn_/view?usp=sharing' },
   { title: 'Enrolment Data', icon: BarChart3, href: 'https://drive.google.com/file/d/17rVtYg2yIVdZTK0obsxOuOdjwJN802X4/view?usp=sharing' },
   { title: 'Regulatory Environment', icon: ShieldCheck, href: 'https://drive.google.com/file/d/1N0UcFbYA9lQgWd1gkXL-1XW_TvYkZ8gc/view?usp=sharing' },
-  { title: 'Strategic Challenges.pdf', icon: FileText, href: 'https://drive.google.com/file/d/11z8usxBkZVNGoBBgTw_ziNN-rRLxVIOp/view?usp=sharing', isFile: true },
+  { title: 'Strategic Challenges', icon: FileText, href: 'https://drive.google.com/file/d/11z8usxBkZVNGoBBgTw_ziNN-rRLxVIOp/view?usp=sharing', isFile: true },
 ];
 
 export function ProfileDocumentsTrigger() {

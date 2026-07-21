@@ -27,7 +27,7 @@ const conclusionItems = [
   {
     name: 'Teaching and\nLearning',
     image: '/props/teaching2.png',
-    link: 'https://drive.google.com/file/d/189L4REmKi3G3855rqZESJgWUjrKgr46F/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1NixRElki2RiD0k1PFPK_SCgG5wW7PZKR/view?usp=sharing',
   },
   {
     name: 'Student\nServices',
