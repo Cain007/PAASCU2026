@@ -386,9 +386,7 @@ export default function WelcomeHero() {
             animate="visible"
             className="mt-8 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
           >
-            Integrated Basic Education Department self-study portal providing
-            accreditation documents, institutional evidence, quality assurance
-            updates, and academic excellence initiatives.
+            Welcome to the Integrated Basic Education Department Self-Study Portal, where we share our journey of quality Catholic education, accreditation, and continuous improvement.
           </motion.p>
 
           {/* CTAs */}

@@ -5,18 +5,18 @@ import Footer from '@/components/layout/Footer';
 import PrincipalPortrait from '@/components/ui/PrincipalPortrait';
 
 export const metadata: Metadata = {
-  title: 'Directress/Principal Message | SCC Biñan PAASCU 2026',
-  description: 'Official message from the Directress/Principal.',
+  title: 'School Head/ Principal | SCC Biñan PAASCU 2026',
+  description: 'Official message from the School Head / Principal.',
 };
 
 const messageParagraphs = [
-  'This profound statement reminds us that authentic growth begins with sincere reflection. The same is true of an educational institution. Without continuous self-examination and external evaluation, a school risks becoming complacent rather than continually responding to the changing needs of the times. Accreditation, therefore, is not merely a process of evaluation; it is an opportunity for renewal, transformation, and excellence.',
+  'This profound statement reminds us that authentic growth begins with sincere reflection. The same is true of an educational institution. Without continuous self-examination and external evaluation, a school risks becoming complacent rather than continually responding to the changing needs of the times. Accreditation, therefore, is not merely a process of evaluation; it is an opportunity for renewal, transformation, and continuous improvement.',
   'As we welcome the PAASCU accreditors to Sta. Catalina College, Inc., we receive this visit with gratitude, confidence, and humility. We recognize accreditation as a valuable partnership that helps us affirm what we do well, identify areas for improvement, and strengthen our commitment to our mission of forming learners who excel academically, grow spiritually, and serve compassionately.',
   'Inspired by the Dominican tradition of seeking truth, we embrace this accreditation journey as a living expression of our school\'s motto, "Passion for Truth and Compassion for Humanity." Like St. Dominic de Guzman, who believed that truth is pursued through study, prayer, dialogue, and service, we remain steadfast in our commitment to providing an education that transforms lives and nurtures responsible, faith-filled, and compassionate citizens.',
-  'This accreditation is not the work of a few but the shared responsibility of our entire school community. I extend my deepest appreciation to our administrators, faculty, staff, students, parents, alumni, and all our partners whose dedication, collaboration, and unwavering support have made this journey possible. Every effort, whether seen or unseen, reflects our collective pursuit of excellence.',
-  'As we open our doors to our PAASCU accreditors, may we also open our minds to learn, our hearts to receive constructive recommendations, and our spirits to embrace continuous improvement. We welcome this experience not as the culmination of our efforts but as another milestone in our enduring journey toward educational excellence.',
+  'This accreditation is not the work of a few but the shared responsibility of our entire school community. I extend my deepest appreciation to our administrators, faculty, staff, students, parents, alumni, and all our partners whose dedication, collaboration, and unwavering support have made this journey possible. Every effort, whether seen or unseen, reflects our collective pursuit of quality service.',
+  'As we open our doors to our PAASCU accreditors, may we also open our minds to learn, our hearts to receive constructive recommendations, and our spirits to embrace continuous improvement. We welcome this experience not as the culmination of our efforts but as another milestone in our enduring journey toward quality education.',
   'May God continue to bless Sta. Catalina College, Inc. as we faithfully pursue truth, serve with compassion, and inspire generations of learners to become instruments of faith, wisdom, and hope.',
-  'Welcome to Sta. Catalina College, Inc. and thank you for accompanying us on this meaningful journey of quality assurance and educational excellence.',
+  'Welcome to Sta. Catalina College, Inc. and thank you for accompanying us on this meaningful journey.',
 ];
 
 const messageHighlights = [
@@ -78,7 +78,7 @@ export default function DirectressPrincipalMessagePage() {
           <article className="overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm">
             <div className="border-b border-amber-200 bg-[#f7c76b] px-6 py-8 text-neutral-950 sm:px-8">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-800">
-                A Message From Our Directress
+                A Message From Our School Head / Principal
               </p>
               <h2 className="mt-3 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
                 Leading With Purpose, Growing With Heart

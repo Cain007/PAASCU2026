@@ -55,7 +55,7 @@ export const navigationItems: NavItem[] = [
     href: '/school-manuals',
   },
   {
-    name: 'Directress/Principal Message',
+    name: 'School Head / Principal Message',
     href: '/directress-principal-message',
   },
 ];
