@@ -21,7 +21,7 @@ const manualItems: ManualItem[] = [
   {
     name: 'Administrative Manual',
     image: '/school-manual/admin2.png',
-    link: 'https://drive.google.com/file/d/1cHRviG1wzFDKmBVfi-aeUNcoT5bsqfJ6/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1gSczgq2Lg3gHP0ikxYZLNXBjdr3f47x8/view?usp=sharing',
   },
 
   {
@@ -40,17 +40,17 @@ const manualItems: ManualItem[] = [
   {
     name: 'Faculty Manual',
     image: '/school-manual/faculty2.png',
-    link: 'https://drive.google.com/file/d/1sT2LeCBvmp1UHiSjGr4PBnKYpuYDXe6o/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1fNGzsNIYNAI9Br8mO47v3eojHnaSbyDL/view?usp=sharing',
   },
   {
     name: 'Student Handbook',
     image: '/school-manual/student2.png',
-    link: 'https://drive.google.com/file/d/1PBn-mk2WNFLFQyVAqBsfrUwyH-iGcPfK/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1N6YV9cXwYYKRV2tI75tIbpnKJK-VDKAN/view?usp=sharing',
   },
   {
     name: 'Auxiliary & Support Personnel Manual',
     image: '/school-manual/asp2.png',
-    link: 'https://drive.google.com/file/d/1wl1SmCvEtSUIhpaWOZNw_NhDnnz16_JX/view?usp=sharing',
+    link: 'https://drive.google.com/file/d/1GBMbLujvcg0JGUKdgIM-9hne7PaugiYt/view?usp=sharing',
   },
 ];
 
