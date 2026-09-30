@@ -12,7 +12,7 @@ import Link from 'next/link';
 const documents = [
   { title: 'History', icon: BookOpen, href: 'https://drive.google.com/file/d/1Zs8i9Q5dgpnhRQI5MDKLFfyiiJDobONT/view?usp=sharing' },
   { title: 'Vision-Mission Statement', icon: Target, href: 'https://drive.google.com/file/d/1zIyUWxPUBiuwUtWxHvoshjFypNC2w0Hs/view?usp=sharing' },
-  { title: 'Institutional Organizational Chart', icon: Network, href: 'https://drive.google.com/file/d/1pStGXKE7wInMQzKCdojWWHuMo5l-ppb-/view?usp=sharing' },
+  { title: 'Institutional Organizational Chart', icon: Network, href: 'https://drive.google.com/file/d/1rXXn1yk7cLImni2KtUl3lXRehqxGDQin/view?usp=sharing' },
   { title: 'Governing Board', icon: Users, href: 'https://drive.google.com/file/d/1TkFct6hqez7XWhbLH80Z5CwI5lscxiwT/view?usp=sharing' },
   { title: 'Educational Program', icon: GraduationCap, href: 'https://drive.google.com/file/d/11EnGqqhzmRBk3FShHL_c5I_ckvL-YSn_/view?usp=sharing' },
   { title: 'Enrolment Data', icon: BarChart3, href: 'https://drive.google.com/file/d/17rVtYg2yIVdZTK0obsxOuOdjwJN802X4/view?usp=sharing' },
